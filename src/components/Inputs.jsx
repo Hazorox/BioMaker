@@ -1,10 +1,26 @@
 import googleicon from "../assets/googleicon.svg";
 import passlogo from "../assets/passlogo.svg";
 import maillogo from "../assets/maillogo.svg";
-
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { transparent,anchorstyle,inputstyle ,buttonstyle} from "../variables";
 const Inputs = ({ newUser }) => {
-  const transparent =
-    "bg-[rgba(255,255,255,0.1)] rounded-lg shadow-lg backdrop-filter backdrop-blur-[3.9px] border border-[rgba(255,255,255,0.24)]";
+  const [inputs, setInputs] = useState({
+    email: "",
+    password: "",
+    confirm: "",
+  });
+  
+    const handleChange=(e)=>{
+      const {name, value} = e.target;
+      setInputs(prevInputs => ({
+        ...prevInputs,
+        [name]: value
+      }))
+      console.log(inputs)
+    }
+  
+ 
 
   return (
     <div
@@ -21,7 +37,8 @@ const Inputs = ({ newUser }) => {
             <span>Email</span>
           </span>
           <input
-            className={transparent + " placeholder:text-secondary"}
+            onChange={handleChange}
+            className={transparent + inputstyle}
             name="email"
             type="email"
             placeholder="Email"
@@ -33,35 +50,55 @@ const Inputs = ({ newUser }) => {
             <span>Password</span>
           </span>
           <input
-            className={transparent + " placeholder:text-secondary"}
+            onChange={handleChange}
+            className={transparent + inputstyle}
             name="password"
             type="password"
             placeholder="Your Unique Password!"
           />
         </div>
         {newUser && (
-          <input
-            className={transparent + " placeholder:text-secondary"}
-            name="confirm"
-            type="password"
-            placeholder="Confirm Your Password"
-          />
+          <div>
+            <input
+              onChange={handleChange}
+              className={transparent + inputstyle}
+              name="confirm"
+              type="password"
+              placeholder="Confirm Your Password"
+            />
+          </div>
         )}
       </div>
       <div className="flex flex-col gap-4">
-        <button className="bg-[#2c9956] py-2 px-4 rounded-lg text-white">
+        <button className={"bg-[#2c9956] py-2.5 px-4 rounded-lg text-white "+buttonstyle}>
           {newUser ? "Sign Up" : "Log In"}
         </button>
-        <div className="flex items-center gap-2">
-          <img src={googleicon} className="w-10 h-10" alt="Google Icon" />
-          <button className="bg-white py-2 px-4 rounded-lg shadow-md">
+        <button className={"flex gap-5 align-middle  w-full justify-center bg-white py-2 px-4 rounded-lg shadow-md "+buttonstyle}>
+          <img src={googleicon} className="w-10 h-7" alt="Google Icon" />
+          <span className="text-secondary mt-auto">
             {newUser ? "Sign Up with Google" : "Log In with Google"}
-          </button>
-        </div>
+          </span>
+        </button>
       </div>
+      <span className="text-center ">
+        {newUser ? (
+          <>
+            Already have an account?{" "}
+            <Link to={"/login"}>
+              <span className={anchorstyle}>Log In</span>
+            </Link>
+          </>
+        ) : (
+          <>
+            Don't have an account?{" "}
+            <Link to={"/signup"}>
+              <span className={anchorstyle}>Sign Up</span>
+            </Link>
+          </>
+        )}
+      </span>
     </div>
   );
 };
 
 export default Inputs;
-

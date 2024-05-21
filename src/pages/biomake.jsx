@@ -37,12 +37,19 @@ const biomake = () => {
             type="file"
             placeholder="Your Amazing photo"
           />
-          <Input
-            name={"Bio"}
-            logo={bio}
-            type="textarea"
-            placeholder="Write a bit about yourself! "
-          />
+          
+            <span className=" my-5 flex items-center gap-4 ">
+              <img src={bio} className="w-6 h-6" />
+              Bio
+            </span>
+            <textarea
+              placeholder="We're Called BioMaker for a Reason !"
+              className={
+                " text-secondary p-[3px]    w-full h-[50px] placeholder:text-center focus:placeholder:opacity-0 placeholder-black focus:border-orange-400 " +
+                transparent
+              }
+            />
+          
           <Input
             name={"Email"}
             logo={maillogo}

@@ -1,7 +1,7 @@
-import React from 'react'
-import Header from '../components/header'
-import Footer from '../components/footer'
-import AccountInput from '../components/AccountInput'
+import React from "react";
+import Header from "../components/header";
+import Footer from "../components/footer";
+import AccountInput from "../components/AccountInput";
 
 const Signup = () => {
   return (
@@ -10,7 +10,7 @@ const Signup = () => {
       <AccountInput newUser={true} />
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Signup
+export default Signup;

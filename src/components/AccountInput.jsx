@@ -27,15 +27,13 @@ const AccountInput = ({ newUser }) => {
   };
 
   return (
-    <div
-      className={
-        `flex flex-col justify-center ` +
-        transparent +
-        ` p-8 sm:w-[250px] h-[350px] md:${
-          newUser ? "h-[1000px]" : "h-[450px]"
-        } md:mx-auto md:w-[450px] ${newUser ? "gap-2" : "gap-5"} `
-      }
-    >
+    <
+      
+    ><div className={
+      `flex flex-col justify-center ` +
+      transparent +
+      ` p-8 sm:w-[250px] h-fit md: md:mx-auto md:w-[450px] ${newUser ? " gap-[5px]" : "gap-[10px]"} `
+    }>
       <div className={"flex flex-col gap-5"}>
         <Input
           logo={maillogo}
@@ -84,24 +82,26 @@ const AccountInput = ({ newUser }) => {
           </span>
         </button>
       </div>
+      </div>
       <span className="text-center ">
-        {newUser ? (
-          <>
-            Already have an account?{" "}
-            <Link to={"/login"}>
-              <span className={anchorstyle}>Log In</span>
-            </Link>
-          </>
-        ) : (
-          <>
-            Don't have an account?{" "}
-            <Link to={"/signup"}>
-              <span className={anchorstyle}>Sign Up</span>
-            </Link>
-          </>
-        )}
-      </span>
-    </div>
+      {newUser ? (
+        <>
+          Already have an account?{" "}
+          <Link to={"/login"}>
+            <span className={anchorstyle}>Log In</span>
+          </Link>
+        </>
+      ) : (
+        <>
+          Don't have an account?{" "}
+          <Link to={"/signup"}>
+            <span className={anchorstyle}>Sign Up</span>
+          </Link>
+        </>
+      )}
+    </span>
+    </>
+    
   );
 };
 

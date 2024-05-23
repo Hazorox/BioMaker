@@ -3,6 +3,7 @@ import Login from "./pages/login";
 import Profile from "./pages/profile";
 import BioMake from "./pages/biomake";
 import Signup from "./pages/signup";
+import NotFound from "./pages/notFound";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Profile />} />
           <Route path="biomake" element={<BioMake />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </Router>

@@ -23,3 +23,4 @@ const Input = ({ logo, handleChange, name, type, placeholder }) => {
 };
 
 export default Input;
+

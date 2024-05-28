@@ -13,10 +13,32 @@ import facebook from "./../assets/facebook.svg";
 import ig from "./../assets/ig.svg";
 import x from "./../assets/x.svg";
 import { buttonstyle } from "../variables";
-
+import { useState } from "react";
 import { transparent } from "../variables";
 import Input from "../components/input";
 const biomake = () => {
+  const [inputs, setInputs] = useState({
+    Name: "",
+    PicURL: "",
+    Bio: "",
+    Email: "",
+    Age: "",
+    Skills: [],
+    FunFacts: [],
+    X: "",
+    Facebook: "",
+    Instagram: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInputs((prevInputs) => ({
+      ...prevInputs,
+      [name]: value,
+    }));
+    console.log(inputs);
+  };
+
   const handleProfileMake = () => {};
   const divStyle = transparent + " h-fit w-[500px] p-[15px] ";
   return (
@@ -30,33 +52,45 @@ const biomake = () => {
             logo={idCard}
             type="text"
             placeholder="Your Unique Name"
+            handleChange={handleChange}
+            
           />
           <Input
             name="Picture"
             logo={pic}
             type="file"
             placeholder="Your Amazing photo"
+            handleChange={handleChange}
           />
-          
-            <span className=" my-5 flex items-center gap-4 ">
-              <img src={bio} className="w-6 h-6" />
-              Bio
-            </span>
-            <textarea
-              placeholder="We're Called BioMaker for a Reason !"
-              className={
-                " text-secondary p-[3px]    w-full h-[50px] placeholder:text-center focus:placeholder:opacity-0 placeholder-black focus:border-orange-400 " +
-                transparent
-              }
-            />
-          
+
+          <span className=" my-5 flex items-center gap-4 ">
+            <img src={bio} className="w-6 h-6" />
+            Bio
+          </span>
+          <textarea
+            placeholder="We're Called BioMaker for a Reason !"
+            className={
+              " text-secondary p-[3px]    w-full h-[50px] placeholder:text-center focus:placeholder:opacity-0 placeholder-black focus:border-orange-400 " +
+              transparent
+            }
+            name="Bio"
+            onChange={handleChange}
+          />
+
           <Input
             name={"Email"}
             logo={maillogo}
             type="email"
             placeholder="Your Email"
+            handleChange={handleChange}
           />
-          <Input name={"Age"} logo={age} type="number" placeholder="Your Age" />
+          <Input
+            name={"Age"}
+            logo={age}
+            type="number"
+            placeholder="Your Age"
+            handleChange={handleChange}
+          />
         </div>
         <div className={divStyle}>
           <span className="text-2xl my-5 flex items-center gap-4 ">
@@ -69,6 +103,8 @@ const biomake = () => {
               " text-secondary p-[3px]   w-full h-[130px] placeholder:text-center focus:placeholder:opacity-0 placeholder-black focus:border-orange-400 " +
               transparent
             }
+            name="Skills"
+            onChange={handleChange}
           />
         </div>
         <div className={divStyle}>
@@ -82,6 +118,9 @@ const biomake = () => {
               " text-secondary p-[3px]   w-full h-[130px] placeholder:text-center focus:placeholder:opacity-0 placeholder-black focus:border-orange-400 " +
               transparent
             }
+            name="FunFacts"
+
+            onChange={handleChange}
           />
         </div>
 
@@ -91,18 +130,21 @@ const biomake = () => {
           </span>
           <Input
             logo={x}
-            name="X ( Twitter )"
+            name="X"
             placeholder="Url for your X account"
+            handleChange={handleChange}
           />
           <Input
             logo={facebook}
             name="Facebook"
             placeholder="Url for your Facebook account"
+            handleChange={handleChange}
           />
           <Input
             logo={ig}
             name="Instagram"
             placeholder="Url for your Instagram account"
+            handleChange={handleChange}
           />
         </div>
         <button

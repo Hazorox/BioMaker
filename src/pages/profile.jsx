@@ -35,7 +35,7 @@ const Profile = () => {
             <div className="w-1/2">a1</div>
             <div className="w-1/2">a2</div>
           </div>
-          <div className="flex h-1/6">social</div>
+          <div className="flex h-1/6 justify-around">sociAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaal</div>
         </div>
       </div>
     </>

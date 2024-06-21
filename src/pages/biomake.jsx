@@ -5,7 +5,7 @@ import bio from "../assets/bio.svg";
 import maillogo from "../assets/maillogo.svg";
 import star from "../assets/star.svg";
 import pic from "../assets/pic.svg";
-import age from "../assets/age.svg";
+// import age from "../assets/age.svg";
 import idCard from "../assets/idCard.svg";
 import joke from "./../assets/joke.svg";
 import network from "./../assets/network.svg";
@@ -22,7 +22,7 @@ const biomake = () => {
     PicURL: "",
     Bio: "",
     Email: "",
-    Age: "",
+    // Age: "",
     Skills: [],
     FunFacts: [],
     X: "",
@@ -84,13 +84,13 @@ const biomake = () => {
             placeholder="Your Email"
             handleChange={handleChange}
           />
-          <Input
+          {/* <Input
             name={"Age"}
             logo={age}
             type="number"
             placeholder="Your Age"
             handleChange={handleChange}
-          />
+          /> */}
         </div>
         <div className={divStyle}>
           <span className="text-2xl my-5 flex items-center gap-4 ">

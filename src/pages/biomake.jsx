@@ -16,6 +16,8 @@ import { buttonstyle } from "../variables";
 import { useState } from "react";
 import { transparent } from "../variables";
 import Input from "../components/input";
+import {toast,ToastContainer} from 'react-toastify'
+
 const biomake = () => {
   const [inputs, setInputs] = useState({
     Name: "",
@@ -38,8 +40,17 @@ const biomake = () => {
     }));
     console.log(inputs);
   };
+  // validationsss
+  const handleSubmit = async () => {
+    toast('lol')
+    setTimeout(() => {
+      toast.dismiss()
+    }, 4000);
 
-  const handleProfileMake = () => {};
+    
+  }
+
+  
   const divStyle = transparent + " h-fit w-[500px] p-[15px] ";
   return (
     <div className="min-h-screen p-15 flex justify-center items-center flex-col">
@@ -148,7 +159,7 @@ const biomake = () => {
           />
         </div>
         <button
-          onClick={handleProfileMake}
+          onClick={handleSubmit}
           className={
             "flex gap-5 align-middle  w-full justify-center bg-green-900 py-2 mt-[-14px] px-4 rounded-lg shadow-md " +
             buttonstyle

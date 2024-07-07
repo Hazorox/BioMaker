@@ -16,7 +16,8 @@ import { buttonstyle } from "../variables";
 import { useState } from "react";
 import { transparent } from "../variables";
 import Input from "../components/input";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
+import useFetchingToast from "../hooks/useToast";
 
 const biomake = () => {
   const [inputs, setInputs] = useState({
@@ -35,13 +36,12 @@ const biomake = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "Skills" || name === "FunFacts") {
-     const splittedValue=value.split("\n")
-      console.log(splittedValue)
+      const splittedValue = value.split("\n");
+      console.log(splittedValue);
       setInputs((prevInputs) => ({
         ...prevInputs,
         [name]: splittedValue,
-      }))
-      
+      }));
     } else {
       setInputs((prevInputs) => ({
         ...prevInputs,
@@ -63,8 +63,8 @@ const biomake = () => {
 
     // Validate Email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (inputs.Email&&!emailRegex.test(inputs.Email)) {
-      toast.error('Please enter a valid email address.', { autoClose: 4000 });
+    if (inputs.Email && !emailRegex.test(inputs.Email)) {
+      toast.error("Please enter a valid email address.", { autoClose: 4000 });
       return;
     }
 
@@ -101,12 +101,21 @@ const biomake = () => {
       });
       return;
     }
-
-    // If all validations pass, you can proceed with the form submission
-    toast.success("Form submitted successfully!", { autoClose: 4000 });
-    // Add your form submission logic here
+    // Fake data Fetching
+    const fetchingFunc = async () => {
+      return new Promise((resolve) => {
+        setTimeout(async () => {
+          const response = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+          const data = await response.json();
+          resolve(data);
+        }, 4000);
+      });
+    };
+    const success = (fetchedData) => {
+      console.log(`fetching data doneeeeee`);
+    };
+    useFetchingToast({ func: fetchingFunc, onSuccess: success });
   };
-
   const divStyle = transparent + " h-fit w-[500px] p-[15px] ";
   return (
     <div className="min-h-screen p-15 flex justify-center items-center flex-col">
@@ -159,7 +168,6 @@ const biomake = () => {
           /> */}
         </div>
         <div className={divStyle}>
-
           <span className="text-2xl my-5 flex items-center gap-4 ">
             <img src={star} className="w-8 h-8" />
             Skills

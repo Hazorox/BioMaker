@@ -30,9 +30,9 @@ const Profile = () => {
       "Fact Six",
       "Fact Six",
     ],
-    X: "",
+    X: "oo",
     Facebook: "https://www.facebook.com/hamza.awad.35912",
-    Instagram: "",
+    Instagram: "aa",
   });
 
   const [showFullBio, setShowFullBio] = useState(false);

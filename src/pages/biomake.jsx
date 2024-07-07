@@ -16,7 +16,7 @@ import { buttonstyle } from "../variables";
 import { useState } from "react";
 import { transparent } from "../variables";
 import Input from "../components/input";
-import {toast,ToastContainer} from 'react-toastify'
+import { toast, ToastContainer } from "react-toastify";
 
 const biomake = () => {
   const [inputs, setInputs] = useState({
@@ -34,23 +34,79 @@ const biomake = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setInputs((prevInputs) => ({
-      ...prevInputs,
-      [name]: value,
-    }));
+    if (name === "Skills" || name === "FunFacts") {
+     const splittedValue=value.split("\n")
+      console.log(splittedValue)
+      setInputs((prevInputs) => ({
+        ...prevInputs,
+        [name]: splittedValue,
+      }))
+      
+    } else {
+      setInputs((prevInputs) => ({
+        ...prevInputs,
+        [name]: value,
+      }));
+    }
     console.log(inputs);
   };
   // validationsss
   const handleSubmit = async () => {
-    toast('lol')
-    setTimeout(() => {
-      toast.dismiss()
-    }, 4000);
+    // Validate Name
+    const nameRegex = /^[a-zA-Z\s-']+$/;
+    if (!nameRegex.test(inputs.Name)) {
+      toast.error("Please enter a valid name.", { autoClose: 4000 });
+      return;
+    }
 
-    
-  }
+    // Validate Picture
 
-  
+    // Validate Email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (inputs.Email&&!emailRegex.test(inputs.Email)) {
+      toast.error('Please enter a valid email address.', { autoClose: 4000 });
+      return;
+    }
+
+    // Validate Skills
+    if (inputs.Skills.length === 0) {
+      toast.error("Please enter at least one skill.", { autoClose: 4000 });
+      return;
+    }
+
+    // // Validate Fun Facts
+    // if (inputs.FunFacts.length === 0) {
+    //   toast.error('Please enter at least one fun fact.', { autoClose: 4000 });
+    //   return;
+    // }
+
+    // Validate Social Media URLs
+    const urlRegex =
+      /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/;
+    if (inputs.X && !urlRegex.test(inputs.X)) {
+      toast.error("Please enter a valid X account URL.", { autoClose: 4000 });
+      return;
+    }
+
+    if (inputs.Facebook && !urlRegex.test(inputs.Facebook)) {
+      toast.error("Please enter a valid Facebook account URL.", {
+        autoClose: 4000,
+      });
+      return;
+    }
+
+    if (inputs.Instagram && !urlRegex.test(inputs.Instagram)) {
+      toast.error("Please enter a valid Instagram account URL.", {
+        autoClose: 4000,
+      });
+      return;
+    }
+
+    // If all validations pass, you can proceed with the form submission
+    toast.success("Form submitted successfully!", { autoClose: 4000 });
+    // Add your form submission logic here
+  };
+
   const divStyle = transparent + " h-fit w-[500px] p-[15px] ";
   return (
     <div className="min-h-screen p-15 flex justify-center items-center flex-col">
@@ -64,7 +120,6 @@ const biomake = () => {
             type="text"
             placeholder="Your Unique Name"
             handleChange={handleChange}
-            
           />
           <Input
             name="Picture"
@@ -104,12 +159,13 @@ const biomake = () => {
           /> */}
         </div>
         <div className={divStyle}>
+
           <span className="text-2xl my-5 flex items-center gap-4 ">
             <img src={star} className="w-8 h-8" />
             Skills
           </span>
           <textarea
-            placeholder="Add Your Skills"
+            placeholder="Add Your Skills (New Line to Add More)"
             className={
               " text-secondary p-[3px]   w-full h-[130px] placeholder:text-center focus:placeholder:opacity-0 placeholder-black focus:border-orange-400 " +
               transparent
@@ -124,13 +180,12 @@ const biomake = () => {
             Fun Facts{" "}
           </span>
           <textarea
-            placeholder="Make Some Jokes  "
+            placeholder="Make Some Jokes (New Line to Add More)  "
             className={
               " text-secondary p-[3px]   w-full h-[130px] placeholder:text-center focus:placeholder:opacity-0 placeholder-black focus:border-orange-400 " +
               transparent
             }
             name="FunFacts"
-
             onChange={handleChange}
           />
         </div>

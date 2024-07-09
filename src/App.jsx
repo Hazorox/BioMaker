@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Login from "./pages/login";
-import Profile from "./pages/profile";
-import BioMake from "./pages/biomake";
-import Signup from "./pages/signup";
-import NotFound from "./pages/notFound";
+import Login from "./frontend/pages/login";
+import Profile from "./frontend/pages/profile";
+import BioMake from "./frontend/pages/biomake";
+import Signup from "./frontend/pages/signup";
+import NotFound from "./frontend/pages/notFound";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

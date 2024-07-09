@@ -17,7 +17,7 @@ import { useState } from "react";
 import { transparent } from "../variables";
 import Input from "../components/input";
 import { toast } from "react-toastify";
-import useFetchingToast from "../hooks/useToast";
+import useFetchingToast from "../../hooks/useToast";
 
 const biomake = () => {
   const [inputs, setInputs] = useState({

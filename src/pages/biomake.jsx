@@ -17,7 +17,7 @@ import { useState } from "react";
 import { transparent } from "../variables";
 import Input from "../components/input";
 import { toast } from "react-toastify";
-import useFetchingToast from "../../hooks/useToast";
+import useFetchingToast from "../hooks/useToast";
 
 const biomake = () => {
   const [inputs, setInputs] = useState({
@@ -105,7 +105,9 @@ const biomake = () => {
     const fetchingFunc = async () => {
       return new Promise((resolve) => {
         setTimeout(async () => {
-          const response = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+          const response = await fetch(
+            "https://jsonplaceholder.typicode.com/todos/1"
+          );
           const data = await response.json();
           resolve(data);
         }, 4000);

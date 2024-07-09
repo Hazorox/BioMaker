@@ -11,7 +11,7 @@ import {
   buttonstyle,
 } from "../variables";
 import Input from "./input";
-import useFetchingToast from "../../hooks/useToast";
+import useFetchingToast from "../hooks/useToast";
 const AccountInput = ({ newUser }) => {
   const [inputs, setInputs] = useState({
     email: "",

@@ -132,7 +132,7 @@ const Profile = () => {
               <span>
                 <ul className="absolute left-[2rem] list-disc">
                   {info.Skills.map((skill) => (
-                    <li>{skill}</li>
+                    <li key={skill}>{skill}</li>
                   ))}
                 </ul>
               </span>
@@ -144,7 +144,7 @@ const Profile = () => {
 
               <ul className="list-disc ml-[2rem]">
                 {info.FunFacts.map((fact) => (
-                  <li>{fact}</li>
+                  <li key={fact}>{fact}</li>
                 ))}
               </ul>
             </div>}

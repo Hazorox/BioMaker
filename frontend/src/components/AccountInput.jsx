@@ -11,7 +11,8 @@ import {
   buttonstyle,
 } from "../variables";
 import Input from "./input";
-import useFetchingToast from "../hooks/useToast";
+// import useFetchingToast from "../hooks/useToast";
+import getUsers from "../hooks/getUsers";
 const AccountInput = ({ newUser }) => {
   const [inputs, setInputs] = useState({
     email: "",
@@ -28,7 +29,7 @@ const AccountInput = ({ newUser }) => {
     console.log(inputs);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     // Validate Email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(inputs.email)) {
@@ -52,21 +53,19 @@ const AccountInput = ({ newUser }) => {
     }
     // Fake fetching to test code
     // I should Replace it with code to fetch users and check if that user is correct
-    const fetchingFunc = async () => {
-      return new Promise((resolve) => {
-        setTimeout(async () => {
-          const response = await fetch(
-            "https://jsonplaceholder.typicode.com/todos/1"
-          );
-          const data = await response.json();
-          resolve(data);
-        }, 4000);
-      });
-    };
-    const success = (fetchedData) => {
-      console.log(`fetching data doneeeeee`);
-    };
-    useFetchingToast({ func: fetchingFunc, onSuccess: success });
+    // Code for making new User
+    toast.loading("BioMaking...");
+    
+    if (newUser) {
+      const query = {
+        email: inputs.email,
+        password: inputs.password,
+      };
+      await getUsers(query);
+    }
+  
+
+    
   };
 
   /* If it is a new user then a new user in the collection will be made

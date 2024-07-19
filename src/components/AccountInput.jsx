@@ -11,8 +11,9 @@ import {
   buttonstyle,
 } from "../variables";
 import Input from "./input";
-// import useFetchingToast from "../hooks/useToast";
-import getUsers from "../hooks/getUsers";
+import { createUser } from "../hooks/createUser";
+import { loginUser } from "../hooks/loginUser";
+
 const AccountInput = ({ newUser }) => {
   const [inputs, setInputs] = useState({
     email: "",
@@ -26,14 +27,13 @@ const AccountInput = ({ newUser }) => {
       ...prevInputs,
       [name]: value,
     }));
-    console.log(inputs);
   };
 
   const handleSubmit = async () => {
     // Validate Email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(inputs.email)) {
-      toast.error("Please enter a valid email address.", { autoClose: 4000 });
+      toast.error("Please enter a valid email address.");
       return;
     }
     if (newUser) {
@@ -41,35 +41,41 @@ const AccountInput = ({ newUser }) => {
         /^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&?_ "]).*$/;
       if (!passRegex.test(inputs.password)) {
         toast.error(
-          "Please make a stronger passowrd. ( like adding numbers and special characters)",
-          { autoClose: 4000 }
+          "Please make a stronger passowrd. ( like adding numbers and special characters)"
         );
         return;
       }
       if (inputs.confirm && inputs.confirm !== inputs.password) {
-        toast.error("Passwords do not match.", { autoClose: 4000 });
+        toast.error("Passwords do not match.");
         return;
       }
     }
     // Fake fetching to test code
     // I should Replace it with code to fetch users and check if that user is correct
     // Code for making new User
-    toast.loading("BioMaking...");
-    
-    if (newUser) {
-      const query = {
-        email: inputs.email,
-        password: inputs.password,
-      };
-      await getUsers(query);
-    }
-  
 
-    
+    try {
+      if (newUser) {
+        await createUser(inputs.email, inputs.password);
+      } else {
+        await loginUser(inputs.email, inputs.password);
+      }
+    } catch (err) {
+      toast.error(err.message);
+    }
   };
 
-  /* If it is a new user then a new user in the collection will be made
-   After All of that the user should get redirected to their profile with their id */
+  const handleGoogleAuth = () => {
+    try {
+      if (newUser) {
+        createUser("", "", "google");
+      } else {
+        loginUser("", "", "google");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <>
@@ -124,6 +130,7 @@ const AccountInput = ({ newUser }) => {
               "flex gap-5 align-middle  w-full justify-center bg-white py-2 px-4 rounded-lg shadow-md " +
               buttonstyle
             }
+            onClick={handleGoogleAuth}
           >
             <img src={googleicon} className="w-10 h-7" alt="Google Icon" />
             <span className="text-secondary mt-auto">

@@ -17,7 +17,6 @@ import { useState } from "react";
 import { transparent } from "../variables";
 import Input from "../components/input";
 import { toast } from "react-toastify";
-import useFetchingToast from "../hooks/useToast";
 
 const biomake = () => {
   const [inputs, setInputs] = useState({
@@ -55,7 +54,7 @@ const biomake = () => {
     // Validate Name
     const nameRegex = /^[a-zA-Z\s-']+$/;
     if (!nameRegex.test(inputs.Name)) {
-      toast.error("Please enter a valid name.", { autoClose: 4000 });
+      toast.error("Please enter a valid name.");
       return;
     }
 
@@ -64,19 +63,19 @@ const biomake = () => {
     // Validate Email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (inputs.Email && !emailRegex.test(inputs.Email)) {
-      toast.error("Please enter a valid email address.", { autoClose: 4000 });
+      toast.error("Please enter a valid email address.");
       return;
     }
 
     // Validate Skills
     if (inputs.Skills.length === 0) {
-      toast.error("Please enter at least one skill.", { autoClose: 4000 });
+      toast.error("Please enter at least one skill.");
       return;
     }
 
     // // Validate Fun Facts
     // if (inputs.FunFacts.length === 0) {
-    //   toast.error('Please enter at least one fun fact.', { autoClose: 4000 });
+    //   toast.error('Please enter at least one fun fact.', {  });
     //   return;
     // }
 
@@ -84,21 +83,17 @@ const biomake = () => {
     const urlRegex =
       /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/;
     if (inputs.X && !urlRegex.test(inputs.X)) {
-      toast.error("Please enter a valid X account URL.", { autoClose: 4000 });
+      toast.error("Please enter a valid X account URL.");
       return;
     }
 
     if (inputs.Facebook && !urlRegex.test(inputs.Facebook)) {
-      toast.error("Please enter a valid Facebook account URL.", {
-        autoClose: 4000,
-      });
+      toast.error("Please enter a valid Facebook account URL.");
       return;
     }
 
     if (inputs.Instagram && !urlRegex.test(inputs.Instagram)) {
-      toast.error("Please enter a valid Instagram account URL.", {
-        autoClose: 4000,
-      });
+      toast.error("Please enter a valid Instagram account URL.");
       return;
     }
     // Fake data Fetching

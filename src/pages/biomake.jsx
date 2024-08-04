@@ -17,9 +17,10 @@ import { useState } from "react";
 import { transparent } from "../variables";
 import Input from "../components/input";
 import { toast } from "react-toastify";
-
+import id from "../assets/id.svg";
 const biomake = () => {
   const [inputs, setInputs] = useState({
+    id:'',
     Name: "",
     PicURL: "",
     Bio: "",
@@ -41,6 +42,11 @@ const biomake = () => {
         ...prevInputs,
         [name]: splittedValue,
       }));
+    }else if(name === "User Name"){
+      setInputs((prevInputs) => ({
+        ...prevInputs,
+        id: value,
+      }));
     } else {
       setInputs((prevInputs) => ({
         ...prevInputs,
@@ -51,6 +57,11 @@ const biomake = () => {
   };
   // validationsss
   const handleSubmit = async () => {
+    // Validate ID
+    if (inputs.id === '') {
+      toast.error("Please enter an ID.");
+      return;
+    }
     // Validate Name
     const nameRegex = /^[a-zA-Z\s-']+$/;
     if (!nameRegex.test(inputs.Name)) {
@@ -95,24 +106,7 @@ const biomake = () => {
     if (inputs.Instagram && !urlRegex.test(inputs.Instagram)) {
       toast.error("Please enter a valid Instagram account URL.");
       return;
-    }
-    // Fake data Fetching
-    const fetchingFunc = async () => {
-      return new Promise((resolve) => {
-        setTimeout(async () => {
-          const response = await fetch(
-            "https://jsonplaceholder.typicode.com/todos/1"
-          );
-          const data = await response.json();
-          resolve(data);
-        }, 4000);
-      });
-    };
-    const success = (fetchedData) => {
-      console.log(`fetching data doneeeeee`);
-    };
-    useFetchingToast({ func: fetchingFunc, onSuccess: success });
-  };
+    }}
   const divStyle = transparent + " h-fit w-[500px] p-[15px] ";
   return (
     <div className="min-h-screen p-15 flex justify-center items-center flex-col">
@@ -120,6 +114,13 @@ const biomake = () => {
       <main className="mt-[50px] m-[20px] flex flex-col gap-14">
         <div className={divStyle}>
           <span className="text-2xl">Personal Info</span>
+          <Input
+            name="User Name"
+            logo={id}
+            type="text"
+            placeholder="This won't be shown to others 👀"
+            handleChange={handleChange}
+          />
           <Input
             name="Name"
             logo={idCard}

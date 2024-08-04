@@ -13,8 +13,9 @@ import {
 import Input from "./input";
 import { createUser } from "../hooks/createUser";
 import { loginUser } from "../hooks/loginUser";
-
+import { useNavigate } from "react-router-dom";
 const AccountInput = ({ newUser }) => {
+  const navigate = useNavigate()
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -41,7 +42,7 @@ const AccountInput = ({ newUser }) => {
         /^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&?_ "]).*$/;
       if (!passRegex.test(inputs.password)) {
         toast.error(
-          "Please make a stronger passowrd. ( like adding numbers and special characters)"
+          "Please make a stronger passowrd. (like adding numbers and special characters)"
         );
         return;
       }
@@ -56,21 +57,26 @@ const AccountInput = ({ newUser }) => {
 
     try {
       if (newUser) {
-        await createUser(inputs.email, inputs.password);
+        await createUser(inputs.email, inputs.password,'email',navigate);
+        // navigate('/biomake',{replace:true})
       } else {
-        await loginUser(inputs.email, inputs.password);
+        await loginUser(inputs.email, inputs.password,'email',navigate);
+        // navigate('/biomake',{replace:true})
       }
     } catch (err) {
-      toast.error(err.message);
+      toast.error('an error occurred');
+      console.log('error')
     }
   };
 
   const handleGoogleAuth = () => {
     try {
       if (newUser) {
-        createUser("", "", "google");
+        createUser("", "", "google",navigate);
+        // navigate('/biomake',{replace:true})
       } else {
-        loginUser("", "", "google");
+        loginUser("", "", "google",navigate);
+        // navigate('/biomake',{replace:true})
       }
     } catch (err) {
       console.log(err);

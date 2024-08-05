@@ -14,7 +14,8 @@ export default function App() {
         <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/:username" element={<Profile />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/profile:id" element={<Profile />} />
           <Route path="biomake" element={<BioMake />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

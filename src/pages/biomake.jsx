@@ -18,6 +18,8 @@ import { transparent } from "../variables";
 import Input from "../components/input";
 import { toast } from "react-toastify";
 import id from "../assets/id.svg";
+import { useNavigate } from "react-router-dom";
+import createProfile from "../hooks/createProfile";
 const biomake = () => {
   const [inputs, setInputs] = useState({
     id:'',
@@ -32,6 +34,7 @@ const biomake = () => {
     Facebook: "",
     Instagram: "",
   });
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -106,7 +109,9 @@ const biomake = () => {
     if (inputs.Instagram && !urlRegex.test(inputs.Instagram)) {
       toast.error("Please enter a valid Instagram account URL.");
       return;
-    }}
+    }
+    await createProfile(inputs,navigate);
+  }
   const divStyle = transparent + " h-fit w-[500px] p-[15px] ";
   return (
     <div className="min-h-screen p-15 flex justify-center items-center flex-col">

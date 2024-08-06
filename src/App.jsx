@@ -15,9 +15,9 @@ export default function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Login />} />
-          <Route path="/profile:id" element={<Profile />} />
+          <Route path="/:id" element={<Profile />} />
           <Route path="biomake" element={<BioMake />} />
-          <Route path="*" element={<NotFound />} />
+          {/* <Route path="*" element={<NotFound />} /> */}
         </Routes>
         <ToastContainer
           position="top-right"

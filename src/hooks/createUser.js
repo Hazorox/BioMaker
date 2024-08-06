@@ -16,6 +16,7 @@ export const createUser = async (email, password, method = "email", navigate) =>
       navigate('/biomake', { replace: true });
     } catch (err) {
       toast.error("An Error Occurred");
+      console.log(err)
     }
   } else {
     try {

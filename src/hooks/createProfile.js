@@ -42,7 +42,7 @@ const createProfile = async (data, navigate) => {
     await addDoc(profiles, data);
     localStorage.setItem("id", JSON.stringify(data.id));
     toast.success("Profile Created Successfully");
-    navigate(`/${data.id}`, { replace: true });
+    navigate(`/:${data.id}`, { replace: true });
   } catch (err) {
     console.log(err);
     toast.error("An Error Occurred");

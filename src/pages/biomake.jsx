@@ -24,7 +24,6 @@ const biomake = () => {
   const [inputs, setInputs] = useState({
     id:'',
     Name: "",
-    PicURL: "",
     Bio: "",
     Email: "",
     // Age: "",
@@ -32,12 +31,13 @@ const biomake = () => {
     FunFacts: [],
     X: "",
     Facebook: "",
-    Instagram: "",
+    Instagram: ""
   });
+  const [picURL,setPicURL]=useState(null)
   const navigate = useNavigate()
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value,files } = e.target;
     if (name === "Skills" || name === "FunFacts") {
       const splittedValue = value.split("\n");
       console.log(splittedValue);
@@ -50,6 +50,8 @@ const biomake = () => {
         ...prevInputs,
         id: value,
       }));
+    }else if(name=="Picture"){
+      setPicURL(files[0])
     } else {
       setInputs((prevInputs) => ({
         ...prevInputs,
@@ -87,6 +89,12 @@ const biomake = () => {
       return;
     }
 
+    //Validate Image
+    if (picURL.type !== "image/png" && picURL.type !== "image/jpeg") {
+      toast.error("Please enter a valid image. (only png or jpg)");
+      return
+    }
+
     // // Validate Fun Facts
     // if (inputs.FunFacts.length === 0) {
     //   toast.error('Please enter at least one fun fact.', {  });
@@ -110,7 +118,7 @@ const biomake = () => {
       toast.error("Please enter a valid Instagram account URL.");
       return;
     }
-    await createProfile(inputs,navigate);
+    await createProfile(inputs,picURL,navigate);
   }
   const divStyle = transparent + " h-fit w-[500px] p-[15px] ";
   return (

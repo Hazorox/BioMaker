@@ -3,7 +3,7 @@
 // import { toast } from "react-toastify"
 // const createProfile = async (data,navigate) => {
 //     try{
-        
+
 //         const profiles = collection(db, "profiles")
 //         const users = await getDocs(profiles)
 //         users.forEach((user) => {
@@ -26,27 +26,19 @@
 import { getDocs, addDoc, collection } from "firebase/firestore";
 import { db } from "../firebase/fb";
 import { toast } from "react-toastify";
-import { ref,uploadBytes } from "firebase/storage";
+import { ref, uploadBytes } from "firebase/storage";
 import { storage } from "../firebase/fb";
-import * as jdenticon from 'jdenticon';
 
-
-const createProfile = async (data, navigate) => {
-  if (data.id==='notFound'){
-    toast.error("This User Name can't be used");
-    return;
-  }
-  
-  try {
-    
-    if(data.Picture===''){
-      data.Picture = jdenticon.toPng(data.Name, 100);
+const createProfile = async (data,picURL, navigate) => {
+  const inValidId = ["notFound", "signup", "login", "biomake"];
+  for (var i in inValidId) {
+    if (data.id === i) {
+      toast.error("This User Name can't be used");
+      return;
     }
-    const imgRef = ref(storage, `images/${data.id}.png`);
-    await uploadBytes(imgRef, data.Picture).then((snapshot) => {
-      console.log("Uploaded a blob or file!");
-    })
+  }
 
+  try {
     const profiles = collection(db, "profiles");
     const profileQuery = await getDocs(profiles);
 
@@ -56,6 +48,13 @@ const createProfile = async (data, navigate) => {
       toast.error("User Name Already Exists");
       return;
     }
+    const imgRef = ref(storage, `images/${data.id}.png`);
+
+    await uploadBytes(imgRef, picURL).then(() => {
+      console.log("Uploaded a blob or file!");
+    });
+
+    
 
     await addDoc(profiles, data);
     localStorage.setItem("id", JSON.stringify(data.id));

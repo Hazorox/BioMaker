@@ -29,7 +29,7 @@ import { toast } from "react-toastify";
 import { ref, uploadBytes } from "firebase/storage";
 import { storage } from "../firebase/fb";
 
-const createProfile = async (data,picURL, navigate) => {
+const createProfile = async (data, picURL, navigate) => {
   const inValidId = ["notFound", "signup", "login", "biomake"];
   for (var i in inValidId) {
     if (data.id === i) {
@@ -53,8 +53,6 @@ const createProfile = async (data,picURL, navigate) => {
     await uploadBytes(imgRef, picURL).then(() => {
       console.log("Uploaded a blob or file!");
     });
-
-    
 
     await addDoc(profiles, data);
     localStorage.setItem("id", JSON.stringify(data.id));

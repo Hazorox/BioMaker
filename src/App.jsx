@@ -16,7 +16,8 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Login />} />
           <Route path="/:id" element={<Profile />} />
-          <Route path="biomake" element={<BioMake />} />
+          <Route path="biomake/create" element={<BioMake mode='create' />} />
+          <Route path="biomake/edit" element={<BioMake mode='edit' />} />
           <Route path="/notFound" element={<NotFound />} />
         </Routes>
         <ToastContainer

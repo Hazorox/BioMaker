@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr Adel Mohamed</title>
+    <link rel="shortcut icon" href="./DR.Adel Mohamed Design (1)/14.png" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@3.0.0-beta.6/dist/aos.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@23.7.3/build/css/intlTelInput.css">
+    <style>
+        @media screen and (max-width: 768px) {
+            *{
+                width:100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="./index.html" style="color: #004b44;">Home</a>
+                <a href="./about.html">About</a>
+                <a href="./contact.html">Contact</a>
+                <a onclick="ComingSoon()" style="color: white;">My Account</a>
+                <img src="./DR.Adel Mohamed Design (1)/15.png" alt="LOGO">
+            </div>
+        </div>
+
+    </div>
+    <div id="google_translate_element" style="position: absolute; margin-top: -55px; left: 1350px;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+        }
+        </script>
+        
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    
+    <div class="buttons">
+        <a href="#first">🔽Start Now</a>
+        <a class="Calculator" onclick="hideShow()">🖩 Calculator</a>
+    </div>
+
+    <div class="bmr-bmi" id="bmr-bmi">
+        <a href="#bmr-calc" class="show-bmr">BMR Calculator</a><br>
+        <a href="./BMI.html" class="show-bmi">BMI Calculator</a>
+    </div>
+    <div class="background">
+        <img src="DR ADEL.png" alt="Dr Adel" style="width: 750px; height: 1113px;" data-aos="fade-right">
+    </div>
+
+    <div class="col-6">
+        <div class="text">
+            <p class="DR" data-aos="fade-up">DR.</p>
+            <p class="ADEL-MOHAMED" data-aos="fade-up-left">ADEL<br>MOHAMED</p>
+            <p class="Unique" data-aos="fade">Unique experience for a unique<br>body</p>
+        </div>
+    </div>
+
+    <a href="#bmr-calc" class="skewed-button" data-aos="fade-down">Calculate my calories</a>
+
+    <div class="intro">
+        <h2>Welcome to Your Journey</h2>
+        <div class="introduction">
+            <h3 data-aos="fade">Who am I?</h3>
+            <p class="p1" data-aos="fade-right">Doctor (pharmacist) , Clinical and sports nutrition specialist , I will help you to know how to reach your goal,<br> achieve your dream, and improve your health with a scientific basis and experience .</p>
+            <p class="section-divider" data-aos="fade-up">______________________________________</p>
+            <h3 class="how-I-started" data-aos="fade-right">How I started?</h3>
+            <p class="p2" data-aos="fade-right">I was lost just like you among the many diet regimens, and I started applying diet plans to myself and was able to achieve an ideal shape and good health, losing more than 20 KG of fat in a healthy way and achieve the ideal shape.<br>
+                From here, I decided to help those around me get into great shape and health.<br><br>
+                I began to gain experience and was able to change the lives of more than 500 clients to better shape and health.<br>
+                That’s why I’m here to help you with knowledge and experience and shorten the long road until you reach the best version of you.<br>
+                My main goal is to help you in all available and appropriate ways to reach the best version of you.
+                </p>
+            <p class="section-divider-2" data-aos="fade-up">______________________________________</p>
+            <h3 class="how-you-can-start" data-aos="fade-right">How you can start?</h3>
+            <p class="p3" data-aos="fade-right">Choose the plan suitable for you and I will help you reach your goal with the best and the most flexible diet plans.<br>
+            </p>
+        </div>
+        <iframe id="myIframe" src="./intro-video-.mp4" frameborder="0" data-aos="fade"></iframe>
+        <a href="https://www.facebook.com/Nutritionfam1?mibextid=LQQJ4d"><img data-aos="fade" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Facebook_Logo_2023.png/768px-Facebook_Logo_2023.png" alt="Facebook" class="Facebook"></a>
+        <a href="https://www.instagram.com/dr.adelmohamed/"><img data-aos="fade" src="https://freelogopng.com/images/all_img/1658586823instagram-logo-transparent.png" alt="Instagram" class="Instagram"></a>
+        <a href="https://www.tiktok.com/@dr.adelmohamed"><img data-aos="fade" src="https://img.freepik.com/premium-vector/tik-tok-logo_578229-290.jpg" alt="Tik Tok" class="Tik-Tok"></a>
+    </div>
+
+    <div class="bmr-calc" id="bmr-calc">
+        <div class="bmr-text">
+            <h2>Calculate your BMR here</h2>
+            <h3 class="add" data-aos="fade">1-Add your information</h3>
+            <ul data-aos="fade-up">
+                <li class="one">SEX</li>
+                <li class="two">AGE</li>
+                <li class="three">WEIGHT</li>
+                <li class="four">HEIGHT</li>
+                <li class="five">GOAL</li>
+                <li class="six">ACTIVITY LEVEL</li>
+            </ul>
+            <h3 class="check" data-aos="fade-right">2-Check the result</h3>
+            <h3 class="use" data-aos="fade-right">3-Use the suitable video for you</h3>
+        </div>
+        <div class="calorie-calculator-container" data-aos="fade">
+            <h1>BMR Calculator</h1>
+            <div id="user-info-form">
+                <form id="info-form">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <br>
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                    <br>
+                </form>
+            </div>
+            
+            <div id="bmr-calc" style="display:none;">
+                <!-- The existing BMR calculator form goes here -->
+            </div>
+            
+            <div class="toggle">
+                <label>
+                    <input type="radio" name="units" value="imperial" id="imperial" onclick="toggleUnits()"> Imperial
+                </label>
+                <label>
+                    <input type="radio" name="units" value="metric" id="metric" checked onclick="toggleUnits()"> Metric
+                </label>
+            </div>
+            <form id="calorie-form">
+                <div class="basic-info">
+                    <label for="sex">Sex:</label>
+                    <select id="sex" name="sex">
+                        <option value="m">Male</option>
+                        <option value="f">Female</option>
+                    </select>
+
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" min="0">
+
+                    <label for="weight">Weight:</label>
+                    <div>
+                        <input type="number" id="weight" name="weight" min="0">
+                        <span class="unit" id="weight-unit">(kg)</span>
+                    </div>
+
+                    <label for="height">Height:</label>
+                    <div id="metric-height">
+                        <input type="number" id="height" name="height" min="0">
+                        <span class="unit" id="height-unit">(cm)</span>
+                    </div>
+                    <div id="imperial-height" style="display: none;">
+                        <input type="number" id="height-feet" name="height-feet" min="0" placeholder="Feet">
+                        <input type="number" id="height-inches" name="height-inches" min="0" max="11" placeholder="Inches">
+                    </div>
+                </div>
+                
+                <label for="goal">Goal:</label>
+                <select id="goal" name="goal">
+                    <option value="lose">Lose Weight</option>
+                    <option value="maintain">Maintain Weight</option>
+                    <option value="gain">Gain Weight</option>
+                </select>
+
+                <label>Activity Level:</label>
+                <div class="activity-level">
+                    <label><input type="radio" name="activity" value="sedentary" checked> Sedentary</label><br><p>Inactive job + very rare or minimal exercise</p>
+                    <label><input type="radio" name="activity" value="lightly_active"> Lightly Active</label><br><p>Light exercise 1-3 days/week.</p>
+                    <label><input type="radio" name="activity" value="moderately_active"> Moderately Active</label><br><p>Moderate exercise 3-5 days/week.</p>
+                    <label><input type="radio" name="activity" value="very_active"> Very Active</label><br><p>Hard exercise 6-7 days/week.</p>
+                    <label><input type="radio" name="activity" value="extremely_active"> Extremely Active</label><br><p>Hard daily exercise and other regular physically demanding tasks.</p>
+                </div>
+
+                <button type="button" onclick="calculateCalories()">Calculate</button>
+            </form>
+            
+            <div id="results">
+                <h2>Your Results:</h2>
+                <p>Target calorie intake per day: <span id="calorie-intake"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="use-the-calc">
+        <h3 data-aos="fade">Use the Calculator number above and watch the video</h3>
+        <div class="dropdown">
+            <button onclick="toggleDropdown('dropdownMenu')" data-aos="fade-right">How to lose weight</button>
+            <div id="dropdownMenu" class="dropdown-menu">
+                <video controls>
+                    <source src="./Lose weight.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        <div class="dropdown2">
+            <button onclick="toggleDropdown('dropdownMenu2')" data-aos="fade-left">How to gain weight</button>
+            <div id="dropdownMenu2" class="dropdown-menu">
+                <video controls>
+                    <source src="./Gain weight.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+
+    <div class="packages">
+        <h3 data-aos="fade-down">Check our packages</h3>
+        <button class="first-pack" onclick="BasicPackage()" data-aos="fade-right">Basic Package</button>
+        <button class="second-pack" onclick="FitPackage()" data-aos="fade-left">Fit Package</button>
+    </div>
+
+    <div class="months">
+        <button class="month1" data-aos="fade-down" onclick="selectDuration(1)">1 month</button>
+        <button class="months2"data-aos="fade-down" onclick="selectDuration(2)">2 months</button>
+        <button class="months3"data-aos="fade-down" onclick="selectDuration(3)">3 months</button>
+    </div>
+
+    <div class="pack" id="first-pack">
+      <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 starter-package" data-aos="fade-right">
+                <h2 id="Starter">Basic Package</h2>
+                <p id="price">$ starting from 399/month</p>
+                <ul>
+                    <li id="li1">A diet suitable for your goal📚 </li>
+                    <li id="li2">We evaluate and you choose the food that you like and is suitable for you 🍔</li>
+                    <li id="li3">An exercise system illustrated with pictures and video (gym/beat)🏋 </li>
+                    <li id="li4">A system that teaches you how to warm up before exercise and do exercises after exercise</li>
+                    <li id="li5">50 healthy food recipes 📚</li>
+                    <li id="li6">Follow up on WhatsApp once every 10 days 📲</li>
+                    <li id="li7">Follow up on results every 10 days</li>
+                </ul>
+                <a id="atag" href="./Basic-Package-1.html"><button class="subscribe-btn" data-aos="fade-up">Subscribe Now</button></a>
+            </div>
+        </div>
+    </div>
+    <iframe src="./package-1.mp4" frameborder="0" id="first" data-aos="fade-left"></iframe>
+    </div>
+
+    <div class="services">
+        <h3 class="badge badge-pill OUR-SERVICES" id="OUR-SERVICES" data-aos="fade-right">OUR SERVICES</h3>
+        <h2 data-aos="fade-right">SERVICES WE'RE OFFERING</h2>
+        <div class="scroll-container">
+            <!-- Repeat content for infinite scroll -->
+            <div class="slider">
+                <div class="slide-track">
+                    <div class="slide-wrapper">
+                        <div class="container">
+                            <div class="card  card-custom text-center">
+                                <div class="icon" data-aos="fade-up">
+                                    <img src="./book.png" alt="" style="width: 87px; height: 85px;">
+                                    <i class="fas fa-dumbbell"></i>
+                                </div>
+                                <h5 class="card-title mt-3">Personalized Nutrition Plan</h5>
+                                <p class="card-text1">Tailor your diet to your tastes with</p>
+                                <p class="card-text2">a customized nutrition plan based on <br>your food preferences.</p>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="card card-custom-blank text-center">
+                                <div class="icon-blank" data-aos="fade-up">
+                                    <img src="./Chestfly.png" alt="">
+                                    <i class="fas fa-dumbbell"></i>
+                                </div>
+                                <h5 class="card-title-blank mt-3">Volume and Intensity Workouts</h5>
+                                <p class="card-text1-blank">Enhance your balance and range of motion</p>
+                                <p class="card-text2-blank">with targeted stability and flexibility exercises.</p>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="card card-custom-new text-center">
+                                <div class="icon-new" data-aos="fade-up">
+                                    <img src="./book1.png" alt="" style="width: 120px; height: 124px;">
+                                    <i class="fas fa-yoga"></i>
+                                </div>
+                                <h5 class="card-title-new mt-3">Recipe E-book</h5>
+                                <p class="card-text1-new">Discover delicious, nutritious meals with</p>
+                                <p class="card-text2-new">our comprehensive food recipes e-book.</p>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="card card-custom-newbie text-center">
+                                <div class="icon-newbie" data-aos="fade-up">
+                                    <img src="./money.png" alt="" style="width: 87px; height: 85px;">
+                                    <i class="fas fa-newbie"></i>
+                                </div>
+                                <h5 class="card-title-newbie mt-3">Budget-Friendly Supplements</h5>
+                                <p class="card-text1-newbie">Get supplement recommendations that</p>
+                                <p class="card-text2-newbie">match your goals and budget.</p>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="card card-custom-newbiee text-center">
+                                <div class="icon-newbiee" data-aos="fade-up">
+                                    <img src="./WhatsApp-removebg-preview.png" alt="" style="width: 85px; height: 85px;">
+                                    <i class="fas fa-newbiee"></i>
+                                </div>
+                                <h5 class="card-title-newbiee mt-3">Daily WhatsApp Check-ins</h5>
+                                <p class="card-text1-newbiee">Stay on track with daily follow-ups</p>
+                                <p class="card-text2-newbiee">and support through WhatsApp.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="wrapper">
+    <p class="badge badge-pill" data-aos="fade-right">OUR CLIENTS</p>
+    <h3 data-aos="fade-up">TRANSFORMATIONS</h3>
+    <div class="item" data-aos="fade"><img src="./Tr1.jpg" alt=""></div>
+    <div class="item" data-aos="fade"><img src="./Tr2.jpg" alt=""></div>
+    <div class="item" data-aos="fade"><img src="./Tr3.jpg" alt=""></div>
+    <div class="item" data-aos="fade"><img src="./Tr4.jpg" alt=""></div>
+    <div class="item" data-aos="fade"><img src="./Tr5.jpg" alt=""></div>
+    <div class="item" data-aos="fade"><img src="./Tr6.jpg" alt=""></div>
+    <div class="item" data-aos="fade"><img src="./Tr7.jpg" alt=""></div>
+    <div class="item" data-aos="fade"><img src="./Tr8.jpg" alt=""></div>
+    <div class="item" data-aos="fade"><img src="./Tr9.jpg" alt=""></div>
+    <div class="item" data-aos="fade"><img src="./Tr10.jpg" alt=""></div>
+    <div class="item" data-aos="fade"><img src="./Tr11.jpg" alt=""></div>
+    <div class="item" data-aos="fade"><img src="./Tr12.jpg" alt=""></div>
+    <div class="item" data-aos="fade"><img src="./Tr13.jpg" alt=""></div>
+    <div class="item" data-aos="fade"><img src="./Tr14.jpg" alt=""></div>
+    <div class="item" data-aos="fade"><img src="./Tr15.jpg" alt=""></div>
+    <div class="item" data-aos="fade"><img src="./Tr16.jpg" alt=""></div>
+</div>
+<div class="unlock">
+        <h6 class="badge badge-pill" data-aos="fade-down-right">MORE ABOUT US</h6>
+        <h1 class="text1" data-aos="fade-right">UNLOCK YOUR FULL</h1> <h1 class="text2" data-aos="fade-right">POTENTIAL, ACHIEVE</h1> <h1 class="text3" data-aos="fade-right">YOUR FITNESS GOALS.</h1>
+        <div class="free-fit">
+            <h3 data-aos="fade-down">Free Fitness Training</h3>
+            <p data-aos="fade-right">Personalized Workout Plans: Our trainers will create<br> custom workout plans based on your goals.</p>
+            <img src="./Heart Red.png" alt="" data-aos="fade">
+        </div>
+        <div class="cardio-strength">
+            <h3 data-aos="fade-down">Cardio and Strength</h3>
+            <p data-aos="fade-right">Join fun and interactive group fitness classes where you<br> can connect with like-minded individuals,</p>
+            <img src="./Treadmill Red.png" alt="" data-aos="fade">
+        </div>
+        <a href="#OUR-SERVICES" class="view-services" data-aos="fade-left">View All Services</a>
+        <a href="#first" class="learn-more" data-aos="fade-right">Subscribe Now</a>
+        <div class="images">
+            <img src="./man-woman.jpg" alt="" class="man-woman">
+            <img src="./deadlift.png" alt="" class="deadlift">
+        </div>
+</div>
+
+<div class="FAQ">
+  <div class="container my-5">
+    <h1 data-aos="fade">F A Q</h1>
+    <div class="faq-item mb-2">
+        <button class="btn btn-link faq-toggle" type="button" id="question1" data-aos="fade-down">
+            QUESTION #1
+        </button>
+        <p class="faq-answer" id="answer1">Can I follow a diet without exercise?<br>
+            Yes, you can achieve results based on your choices and efforts.<br> We aim for high diet success, with 80% of any desired outcome<br> relying on your commitment.</p>
+    </div>
+    <div class="faq-item mb-2">
+        <button class="btn btn-link faq-toggle" type="button" id="question2" data-aos="fade-down">
+            QUESTION #2
+        </button>
+        <p class="faq-answer" id="answer2">What medications will be used?<br>
+            We do not use any weight loss medications as many contain<br> chemicals prohibited globally. We achieve results through diet,<br> exercise, and monitoring.</p>
+    </div>
+    <div class="faq-item mb-2">
+        <button class="btn btn-link faq-toggle" type="button" id="question3" data-aos="fade-down">
+            QUESTION #3
+        </button>
+        <p class="faq-answer" id="answer3">I cannot exercise at the gym. Can I exercise at home?<br>
+            We provide suitable home exercise plans based on available equipment. If no equipment is available<br> we offer plans with<br> photo and video explanations.</p>
+    </div>
+    <div class="faq-item mb-2">
+        <button class="btn btn-link faq-toggle" type="button" id="question4" data-aos="fade-down">
+            QUESTION #4
+        </button>
+        <p class="faq-answer" id="answer4">I want to lose weight quickly. Is that possible? Quick and easy<br> methods aren’t the best for sustainable fat loss. They may not<br> change your lifestyle and might not lead to healthy weight loss.<br> However, with commitment and consistency, we can help you<br> achieve the best version of yourself.</p>
+    </div>
+    <div class="faq-item mb-2">
+        <button class="btn btn-link faq-toggle" type="button" id="question5" data-aos="fade-down">
+            QUESTION #5
+        </button>
+        <p class="faq-answer" id="answer5">Who will follow up with me?<br>
+            I personally oversee your progress and design everything to<br> ensure 100% accuracy and effectiveness.</p>
+    </div>
+    <div class="faq-item mb-2">
+        <button class="btn btn-link faq-toggle" type="button" id="question6" data-aos="fade-down">
+            QUESTION #6
+        </button>
+        <p class="faq-answer" id="answer6">Will I feel hungry all the time, and will the diet be boring?<br>
+            The diet is tailored to your needs and ensures satiety.<br> Additionally, we provide 50 free healthy meal recipes to keep<br> your diet interesting.</p>
+    </div>
+    <div class="faq-item mb-2">
+        <button class="btn btn-link faq-toggle" type="button" id="question7" data-aos="fade-down">
+            QUESTION #7
+        </button>
+        <p class="faq-answer" id="answer7">Can I postpone or delay my subscription?<br>
+            You have a one-month grace period to delay your subscription.<br> Your health and goals are my priority above all else.</p>
+    </div>
+    <div class="faq-item mb-2">
+        <button class="btn btn-link faq-toggle" type="button" id="question8" data-aos="fade-down">
+            QUESTION #8
+        </button>
+        <p class="faq-answer" id="answer8">How much weight can I lose and in what timeframe?<br>
+            Promises of specific weight loss amounts in set timeframes are<br> unrealistic. After calculating everything and assessing your<br> body’s response, we can determine your future weight loss goals<br> accurately.</p>
+    </div>
+
+</div>
+</div>
+
+
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const toggles = document.querySelectorAll('.faq-toggle');
+
+    toggles.forEach(function (toggle) {
+        toggle.addEventListener('click', function () {
+            const answerId = `answer${this.id.replace('question', '')}`;
+            const answer = document.getElementById(answerId);
+
+            if (answer.style.display === 'none' || answer.style.display === '') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
+        });
+    });
+});
+
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const dropdown = document.querySelector('.dropdown a');
+    const dropdownContent = document.querySelector('.dropdown .dropdown-content');
+
+    dropdown.addEventListener('click', function (event) {
+        // Toggle the display of the dropdown content on click
+        if (dropdownContent.style.display === 'block') {
+            dropdownContent.style.display = 'none';
+        } else {
+            dropdownContent.style.display = 'block';
+        }
+
+        // Prevent the default action of the anchor tag
+        event.preventDefault();
+    });
+
+    // Optional: Close the dropdown if clicking outside of it
+    window.addEventListener('click', function (event) {
+        // Check if the click was outside of the dropdown
+        if (!event.target.closest('.dropdown')) {
+            if (dropdownContent.style.display === 'block') {
+                dropdownContent.style.display = 'none';
+            }
+        }
+    });
+});
+</script>
+
+
+<script>
+    var div = document.getElementById("bmr-bmi")
+    var display = 0;
+    div.style.display = "none";
+    function hideShow() {
+        if (display == 1) {
+            div.style.display = "block";
+            display = 0;
+        }
+        else {
+            div.style.display = "none";
+            display = 1;
+        }
+    }
+</script>
+
+<script>
+    function ComingSoon() {
+        window.alert("Coming Soon!")
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+ var currentPackage = 'Basic'; // Default package
+
+function BasicPackage() {
+    currentPackage = 'Basic';
+    var iframe = document.getElementById("first");
+    iframe.src = './package-1.mp4';
+    document.getElementById("li6").innerText = "Follow up on WhatsApp once every 10 days 📲";
+    document.getElementById("Starter").innerText = "Basic Package";
+    document.getElementById("price").innerText = "$ starting from 399/month";
+    document.getElementById("atag").href = "./Basic-Package-1.html";
+}
+
+function FitPackage() {
+    currentPackage = 'Fit';
+    var iframe = document.getElementById("first");
+    iframe.src = './package-3.mp4';
+    document.getElementById("li6").innerText = "Follow up on WhatsApp once every 24 hours 📲";
+    document.getElementById("Starter").innerText = "Fit Package";
+    document.getElementById("price").innerText = "$ starting from 499/month";
+    document.getElementById("atag").href = "./Fit-Package-1.html";
+}
+
+function selectDuration(months) {
+    var price, href;
+
+    if (currentPackage === 'Basic') {
+        if (months === 1) {
+            price = "$ starting from 399";
+            href = "./Basic-Package-1.html";
+        } else if (months === 2) {
+            price = "$ starting from 599";
+            href = "./Basic-Package-2.html";
+        } else if (months === 3) {
+            price = "$ starting from 749";
+            href = "./Basic-Package-3.html";
+        }
+    } else if (currentPackage === 'Fit') {
+        if (months === 1) {
+            price = "$ starting from 499";
+            href = "./Fit-Package-1.html";
+        } else if (months === 2) {
+            price = "$ starting from 699";
+            href = "./Fit-Package-2.html";
+        } else if (months === 3) {
+            price = "$ starting from 899";
+            href = "./Fit-Package-3.html";
+        }
+    }
+
+    document.getElementById("price").innerText = price + "/month";
+    document.getElementById("atag").href = href;
+}
+
+</script>
+
+  <script>
+      function processIframeContent() {
+    var iframe = document.getElementById('myIframe');
+    var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+    var videos = iframeDoc.getElementsByTagName('video');
+    for (var i = 0; i < videos.length; i++) {
+      videos[i].pause(); // Ensure the video is not playing
+      videos[i].removeAttribute('autoplay'); // Remove autoplay attribute if present
+    }
+  }
+
+  function checkIframe() {
+    var iframe = document.getElementById('myIframe');
+    var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+    if (iframeDoc.readyState === 'complete') {
+      processIframeContent();
+      clearInterval(interval); // Stop polling once done
+    }
+  }
+
+  var interval = setInterval(checkIframe, 1); // Check every 500 milliseconds
+  </script>
+
+  <script>
+    function handleIframeContent() {
+    var iframe = document.getElementById('first');
+    var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+    var videos = iframeDoc.getElementsByTagName('video');
+    for (var i = 0; i < videos.length; i++) {
+        videos[i].pause(); // Ensure the video is not playing
+        videos[i].removeAttribute('autoplay'); // Remove autoplay attribute if present
+    }
+}
+
+function verifyIframe() {
+    var iframe = document.getElementById('first');
+    var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+    if (iframeDoc.readyState === 'complete') {
+        handleIframeContent();
+        clearInterval(checkInterval); // Stop polling once done
+    }
+}
+
+var checkInterval = setInterval(verifyIframe, 1); // Check every 500 milliseconds
+
+  </script>
+
+    
+    <script src="https://unpkg.com/aos@3.0.0-beta.6/dist/aos.js "></script>
+    <script>
+        AOS.init(); 
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@23.7.3/build/js/intlTelInput.min.js"></script>
+    <script>
+      const input = document.querySelector("#phone");
+      window.intlTelInput(input, {
+        utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@23.7.3/build/js/utils.js",
+      });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Vvo6HppcZGetbYM6WSFlBw8HFCJ0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js" integrity="sha256-/ijcOLwFf26xEYAjW75FizKVo5tnTViQddPZoLUHHZ8=" crossorigin="anonymous"></script>
+    <script src="bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
+    <script type="module">
+import {getAuth,createUserWithEmailAndPassword} from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js'
+const auth = getAuth(app)
+        // Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+// import { getAnalytics } from "firebase/analytics";
+import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+    apiKey: "AIzaSyCdednz4-KK3jXYIN-9hbSK8PGIMzGKNLM",
+    authDomain: "test-32904.firebaseapp.com",
+    projectId: "test-32904",
+    storageBucket: "test-32904.appspot.com",
+    messagingSenderId: "1053195191520",
+    appId: "1:1053195191520:web:71895a4416a8acded9bc85",
+    measurementId: "G-6EHES5260H"
+  };
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore()
+window.calculateCalories=async function() {
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  if (name == "" || phone == "") {
+    alert("Please enter both your name and phone number.");
+    return;
+  } else {
+    const sex = document.getElementById("sex").value;
+    const age = parseFloat(document.getElementById("age").value);
+    let weight = parseFloat(document.getElementById("weight").value);
+    let height;
+
+    const isImperial = document.getElementById("imperial").checked;
+
+    if (isNaN(age) || age <= 0) {
+      alert("Please enter a valid age.");
+      return;
+    }
+
+    if (isNaN(weight) || weight <= 0) {
+      alert("Please enter a valid weight.");
+      return;
+    }
+
+    if (isImperial) {
+      const heightFeet = parseFloat(
+        document.getElementById("height-feet").value
+      );
+      const heightInches = parseFloat(
+        document.getElementById("height-inches").value
+      );
+      weight = weight * 0.453592; // Convert pounds to kg
+      height = heightFeet * 30.48 + heightInches * 2.54; // Convert feet and inches to cm
+    } else {
+      height = parseFloat(document.getElementById("height").value);
+    }
+
+    let bmr;
+
+    if (sex === "m") {
+      bmr = 88.362 + 13.397 * weight + 4.799 * height - 5.677 * age;
+    } else {
+      bmr = 447.593 + 9.247 * weight + 3.098 * height - 4.33 * age;
+    }
+
+    const activityFactors = {
+      sedentary: 1.2,
+      lightly_active: 1.375,
+      moderately_active: 1.55,
+      very_active: 1.725,
+      extremely_active: 1.9,
+    };
+
+    const activity = document.querySelector(
+      'input[name="activity"]:checked'
+    ).value;
+    const activityFactor = activityFactors[activity];
+    const dailyCalories = bmr * activityFactor;
+
+    document.getElementById("calorie-intake").innerText =
+      dailyCalories.toFixed(2);
+    document.getElementById("results").style.display = "block";
+    try {
+      const db = getFirestore();
+      const usersRef = await collection(db, "users");
+      const docRef = await addDoc(usersRef, {
+        name: name,
+        phone: phone,
+        sex: sex,
+        age: age,
+        weight: weight,
+        height: height,
+        goal: document.getElementById("goal").value,
+        activity: activity,
+        calories: dailyCalories.toFixed(2),
+        madeAt: Date.now(),
+      });
+      console.log("done");
+    } catch (err) {
+      console.log(err);
+    }
+
+    // Send data to the server
+    // const xhr = new XMLHttpRequest();
+    // xhr.open("POST", "save_data.php", true); // Update to your PHP file path
+    // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    // xhr.send(`name=${name}&phone=${phone}&sex=${sex}&age=${age}&weight=${weight}&height=${height}&goal=${goal}&activity=${activity}&calories=${dailyCalories.toFixed(2)}`);
+  }
+}
+
+
+
+    </script>
+    <script>
+
+      
+
+// Get form element and result div
+const bmiForm = document.getElementById('bmiForm');
+const resultDiv = document.getElementById('result');
+
+// Add submit event listener to form
+bmiForm.addEventListener('submit', function(event) {
+    // Prevent default form submission
+    event.preventDefault();
+
+    // Get values of weight and height input fields
+    const weight = parseFloat(document.getElementById('weight').value);
+    const height = parseFloat(document.getElementById('height').value);
+
+    // Check if inputs are valid numbers
+    if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+        resultDiv.textContent = 'Please enter valid numbers for weight and height.';
+        resultDiv.style.color = 'red';
+        return;
+    }
+
+    // Calculate BMI
+    const bmi = weight / (height * height);
+
+    // Determine BMI category
+    let category;
+    if (bmi < 18.5) {
+        category = 'Underweight';
+    } else if (bmi < 25) {
+        category = 'Normal weight';
+    } else if (bmi < 30) {
+        category = 'Overweight';
+    } else {
+        category = 'Obese';
+    }
+
+    // Display result
+    resultDiv.textContent = `Your BMI is ${bmi.toFixed(1)}. You are ${category}.`;
+    resultDiv.style.color = 'green';
+});
+
+        
+function toggleUnits() {
+  const isImperial = document.getElementById("imperial").checked;
+  document.getElementById("weight-unit").innerText = isImperial
+    ? "(lb)"
+    : "(kg)";
+  document.getElementById("height-unit").innerText = isImperial
+    ? "(ft)"
+    : "(cm)";
+  document.getElementById("metric-height").style.display = isImperial
+    ? "none"
+    : "block";
+  document.getElementById("imperial-height").style.display = isImperial
+    ? "block"
+    : "none";
+}
+
+function submitUserInfo() {
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+
+  if (name && phone) {
+    document.getElementById("user-info-form").style.display = "none";
+    document.getElementById("bmr-calc").style.display = "block";
+  } else {
+    alert("Please enter both your name and phone number.");
+  }
+}
+
+// Function to toggle the visibility of the package sections
+function showSection(sectionId) {
+    const sections = document.querySelectorAll('.package-section');
+    sections.forEach(section => {
+        if (section.id === sectionId) {
+            section.style.display = 'block';
+        } else {
+            section.style.display = 'none';
+        }
+    });
+}
+
+// Example usage: Add event listeners to your buttons
+document.querySelectorAll('.package-button').forEach(button => {
+    button.addEventListener('click', function() {
+        const sectionId = this.getAttribute('data-section');
+        showSection(sectionId);
+    });
+});
+
+
+function toggleDropdown(menuId) {
+  var dropdownMenu = document.getElementById(menuId);
+  if (
+    dropdownMenu.style.display === "none" ||
+    dropdownMenu.style.display === ""
+  ) {
+    dropdownMenu.style.display = "block";
+  } else {
+    dropdownMenu.style.display = "none";
+  }
+}
+
+// Handle package button clicks
+document.querySelectorAll('.package-button').forEach(button => {
+    button.addEventListener('click', (event) => {
+        event.preventDefault();
+        const packageId = event.target.getAttribute('data-package');
+        
+        // Hide all packages content
+        document.querySelectorAll('.package-content').forEach(content => {
+            content.style.display = 'none';
+        });
+
+        // Show the selected package content
+        const selectedPackage = document.getElementById(packageId);
+        if (selectedPackage) {
+            selectedPackage.style.display = 'block';
+        }
+    });
+});
+
+    </script>
+</body>
+</html>

@@ -4,7 +4,6 @@ import {
   GoogleAuthProvider,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 export const loginUser = async (
   email,
@@ -36,7 +35,7 @@ export const loginUser = async (
     try {
       await signInWithEmailAndPassword(auth, email, password);
       try{
-        const id = localStorage.getItem('id')
+        const id = JSON.parse(localStorage.getItem('id'))
         if(id){
           navigate(`/${id}`)
         }else{

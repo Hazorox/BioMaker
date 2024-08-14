@@ -359,6 +359,15 @@ const biomake = ({mode}) => {
       toast.error("Please enter at least one skill.");
       return;
     }
+    if (inputs.Skills.length>8){
+      toast.error("We only support up to 8 skills")
+      toast.info("Ma bro got skills ✨")
+      return
+    }if(inputs.FunFacts.length>8){
+      toast.error("We only support up to 8 fun facts")
+      toast.info("People won't laugh on all of that (。_。)")
+      return;
+    }
 
     // Validate Image
     if (picURL && picURL.type !== "image/png" && picURL.type !== "image/jpeg") {
@@ -387,9 +396,9 @@ const biomake = ({mode}) => {
     await createProfile(inputs, picURL, navigate);
   };
 
-  const divStyle = transparent + " h-fit w-[500px] p-[15px] ";
+  const divStyle = transparent + " h-fit sm:w-[90%] md:w-[500px] p-[15px] ";
   return (
-    <div className="min-h-screen p-15 flex justify-center items-center flex-col">
+    <div className="min-h-screen md:p-15 flex justify-center items-center flex-col md:w-full sm:w-[70%]">
       <Header message={mode=='create'?"Welcome! Start BioMaking":"Welcome! Remake your Bio! "} />
       <main className="mt-[50px] m-[20px] flex flex-col gap-14">
         <div className={divStyle}>
@@ -509,7 +518,6 @@ const biomake = ({mode}) => {
           Create My Profile
         </button>
       </main>
-      <Footer />
     </div>
   );
 };

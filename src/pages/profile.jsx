@@ -7,21 +7,34 @@ import x from "./../assets/x.svg";
 import { FaXmark } from "react-icons/fa6";
 import { useNavigate, useParams } from "react-router-dom";
 import Avatar from "avatar-initials";
-
+import { buttonstyle } from "../variables";
 import "../idk.css";
 import getProfile from "../hooks/getProfile";
+import { FaEdit } from "react-icons/fa";
 
 const Profile = () => {
   const logoStyle = "w-[50px] h-[50px] cursor-pointer";
   const { id } = useParams();
+  const localId = JSON.parse(localStorage.getItem("id"));
   const [info, setInfo] = useState(null);
   const [showFullBio, setShowFullBio] = useState(false);
   const [showEmail, setShowEmail] = useState(false);
   const navigate = useNavigate();
-
+  const goEdit = () => {
+    navigate(`biomake/edit/`);
+  };
   useEffect(() => {
-    setInfo(getProfile(id));
-    console.log(info)
+    const fetchProfile = async () => {
+      try {
+        const profileData = await getProfile(id);
+        setInfo(profileData);
+      } catch (error) {
+        console.error("Error fetching profile:", error);
+        navigate("/notFound"); // Navigate to not found page if there's an error
+      }
+    };
+
+    fetchProfile();
   }, [id, navigate]);
 
   useEffect(() => {
@@ -63,10 +76,12 @@ const Profile = () => {
           className={
             (showEmail ? "visible " : "hidden ") +
             transparent +
-            " w-[500px] h-[300px] p-[15px] gap-[10px] flex flex-col"
+            " w-[500px] h-[300px] p-[15px] gap-[10px] flex flex-col justify-center items-center"
           }
         >
-          <p className="text-2xl font-bold">{info.Name}'s Email Address</p>
+          <p className="text-2xl font-bold absolute top-2 left-2">
+            {info.Name.split(" ")[0]}'s Email Address
+          </p>
           <p className="overflow-auto">{info.Email}</p>
           {/* <img src={} alt="close button" className="w-[20px] h-[20px] cursor-pointer" /> */}
           <FaXmark
@@ -82,7 +97,7 @@ const Profile = () => {
           className={
             (showFullBio ? "visible " : "hidden ") +
             transparent +
-            " w-[700px] h-[700px] p-[15px] gap-[10px] flex flex-col"
+            " w-[700px] h-[700px] p-[15px] gap-[10px] flex flex-col leading-2 text-lg"
           }
         >
           <p className="text-3xl font-bold">{info.Name}'s Bio</p>
@@ -101,27 +116,29 @@ const Profile = () => {
           className={
             (showFullBio || showEmail ? "hidden " : "visible ") +
             transparent +
-            " w-[700px] h-[500px] p-[15px] gap-[10px] flex flex-col"
+            " w-[350px] md:w-[700px]  h-[500px] p-[15px] gap-[10px] flex flex-col"
           }
         >
           <div className="h-2/6  flex space-between">
-            <span className="w-1/6 flex flex-col justify-center">
+            <span className="w-[120px] md:w-1/6  flex flex-col justify-center">
               <img
                 src={info.picURL}
                 alt="profile picture"
-                className="w-[100px] h-[100px] rounded-full"
+                className="h-[100px] md:w-[100px] md:h-[100px] rounded-full"
               />
             </span>
             <div className="w-5/6 flex flex-col items-center mt-5 mb-10  ">
-              <p className="text-3xl font-bold">{info.Name}</p>
-              <p className="">
+              <p className="text-3xl font-bold relative sm:top-[10px] md:top-[15px]">
+                {info.Name}
+              </p>
+              <p className="text-xs md:text-xl md:leading-normal sm:leading-snug md:mt-[16px] sm:text-[0.5rem]">
                 {/* {showFullBio ? info.bio : `${info.bio.slice(0, 100)}...`} */}
-                {info && info.Bio ? info.Bio.slice(0, 140) : ''}
+                {info && info.Bio ? info.Bio.slice(0, 140) : ""}
               </p>
               {info.Bio.length > 140 && (
                 <button
                   id="showMoreButton"
-                  className="text-blue-500 hover:underline"
+                  className="text-blue-500 hover:underline relative bottom-2 md:bottom-0 "
                   onClick={toggleBioVisibility}
                 >
                   {showFullBio ? "Show Less" : "Show More"}
@@ -199,6 +216,17 @@ const Profile = () => {
             )}
           </div>
         </div>
+        {localId == id ? (
+          <button
+            className={
+              "flex gap-5 align-middle h-[40px]  w-[250px] justify-center bg-gray-500 py-2 px-4 rounded-md shadow-md absolute bottom-10  " +
+              buttonstyle
+            }
+            onClick={goEdit}
+          >
+            <FaEdit className="text-2xl" /> Edit
+          </button>
+        ) : null}
       </div>
     </>
   );

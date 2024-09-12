@@ -6,7 +6,7 @@ import ig from "./../assets/ig.svg";
 import x from "./../assets/x.svg";
 import { FaXmark } from "react-icons/fa6";
 import { useNavigate, useParams } from "react-router-dom";
-import Avatar from "avatar-initials";
+import Avatar, { AvatarComponent } from "avatar-initials";
 import { buttonstyle } from "../variables";
 import "../idk.css";
 import getProfile from "../hooks/getProfile";
@@ -21,7 +21,7 @@ const Profile = () => {
   const [showEmail, setShowEmail] = useState(false);
   const navigate = useNavigate();
   const goEdit = () => {
-    navigate(`biomake/edit/`);
+    navigate(`/biomake/edit/`);
   };
   useEffect(() => {
     const fetchProfile = async () => {
@@ -101,7 +101,8 @@ const Profile = () => {
           }
         >
           <p className="text-3xl font-bold">{info.Name}'s Bio</p>
-          <p className="overflow-auto">{info.Bio}</p>
+          {/* <p className="overflow-auto">{info.Bio}</p> */}
+          <div className="overflow-auto">{info.Bio}</div>
           {/* <img src={} alt="close button" className="w-[20px] h-[20px] cursor-pointer" /> */}
           <FaXmark
             color="black"
@@ -132,8 +133,8 @@ const Profile = () => {
                 {info.Name}
               </p>
               <p className="text-xs md:text-xl md:leading-normal sm:leading-snug md:mt-[16px] sm:text-[0.5rem]">
-                {/* {showFullBio ? info.bio : `${info.bio.slice(0, 100)}...`} */}
-                {info && info.Bio ? info.Bio.slice(0, 140) : ""}
+                {showFullBio ? info.bio : info.Bio.includes('\n')? `${info.Bio.slice(0,140)}`:info.Bio.slice(0,50)}
+                {/* {info && info.Bio ? info.Bio.slice(0, 140) : ""} */}
               </p>
               {info.Bio.length > 140 && (
                 <button
@@ -216,6 +217,7 @@ const Profile = () => {
             )}
           </div>
         </div>
+        {/* Edit Button */}
         {localId == id ? (
           <button
             className={
@@ -224,6 +226,7 @@ const Profile = () => {
             }
             onClick={goEdit}
           >
+            {/* Edit Icon */}
             <FaEdit className="text-2xl" /> Edit
           </button>
         ) : null}

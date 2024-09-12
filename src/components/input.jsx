@@ -1,6 +1,6 @@
 import React from "react";
 import { transparent, inputstyle } from "../variables";
-const Input = ({ logo, handleChange, name, type, placeholder }) => {
+const Input = ({ logo, handleChange, name, type, placeholder,value='' }) => {
   return (
     <>
       <div>
@@ -16,6 +16,7 @@ const Input = ({ logo, handleChange, name, type, placeholder }) => {
           name={name}
           type={type ? type : "text"}
           placeholder={placeholder}
+          value={value?value:null}
         />
       </div>
     </>

@@ -6,7 +6,6 @@ import Signup from "./pages/signup";
 import NotFound from "./pages/notFound";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 export default function App() {
   return (
     <Router>

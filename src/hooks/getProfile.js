@@ -14,9 +14,11 @@ const getProfile = async (id) => {
     const imgRef = ref(storage, `images/${id}.png`);
     const url = await getDownloadURL(imgRef);
     userDoc.picURL = url;
+    console.log(userDoc.picURL)
   } catch (error) {
     userDoc.picURL = ""; // No image found, will generate avatar later
   }
+  
 
   if (userDoc) {
     return userDoc

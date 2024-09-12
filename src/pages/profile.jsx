@@ -1,3 +1,4 @@
+//TODO: Add Share Button with ability to share to platforms
 import React, { useState, useEffect } from "react";
 import { transparent } from "../variables";
 import maillogo from "../assets/maillogo.svg";
@@ -11,7 +12,6 @@ import { buttonstyle } from "../variables";
 import "../idk.css";
 import getProfile from "../hooks/getProfile";
 import { FaEdit } from "react-icons/fa";
-
 const Profile = () => {
   const logoStyle = "w-[50px] h-[50px] cursor-pointer";
   const { id } = useParams();

@@ -1,4 +1,4 @@
-//TODO: Add Share Button with ability to share to platforms
+//TODO: Add functionallity to the share button
 import React, { useState, useEffect } from "react";
 import { transparent } from "../variables";
 import maillogo from "../assets/maillogo.svg";
@@ -11,7 +11,7 @@ import Avatar, { AvatarComponent } from "avatar-initials";
 import { buttonstyle } from "../variables";
 import "../idk.css";
 import getProfile from "../hooks/getProfile";
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaShareAlt } from "react-icons/fa";
 const Profile = () => {
   const logoStyle = "w-[50px] h-[50px] cursor-pointer";
   const { id } = useParams();
@@ -23,6 +23,9 @@ const Profile = () => {
   const goEdit = () => {
     navigate(`/biomake/edit/`);
   };
+  const openShare =() =>{
+
+  }
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -218,10 +221,21 @@ const Profile = () => {
           </div>
         </div>
         {/* Edit Button */}
+        
+          <button
+            className={
+              "bg-green-500 flex gap-5  h-[40px]  w-[250px] justify-center py-2 px-4 rounded-md shadow-md absolute bottom-1 md:bottom-10  " +buttonstyle
+            }
+            onClick={openShare}
+          >
+            
+            <FaShareAlt className="text-2xl" /> Share
+          </button>
+         
         {localId == id ? (
           <button
             className={
-              "flex gap-5 align-middle h-[40px]  w-[250px] justify-center bg-gray-500 py-2 px-4 rounded-md shadow-md absolute bottom-10  " +
+              "flex gap-5 align-middle h-[40px] absolute   w-[250px] justify-center bg-gray-500 py-2 px-4 rounded-md shadow-md bottom-[50px] md:bottom-[90px]  " +
               buttonstyle
             }
             onClick={goEdit}

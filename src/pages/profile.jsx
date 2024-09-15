@@ -129,17 +129,17 @@ const Profile = () => {
               />
             </span>
             <div className="w-5/6 flex flex-col items-center mt-5 mb-10  ">
-              <p className="text-3xl font-bold relative sm:top-[10px] md:top-[15px]">
+              <p className="text-md mb-2 md:mb-auto md:text-3xl font-bold relative sm:top-[10px] md:top-[15px]">
                 {info.Name}
               </p>
-              <p className="text-xs md:text-xl md:leading-normal sm:leading-snug md:mt-[16px] sm:text-[0.5rem]">
-                {showFullBio ? info.bio : info.Bio.includes('\n')? `${info.Bio.slice(0,140)}`:info.Bio.slice(0,50)}
+              <p className="text-xs  md:text-xl md:leading-normal sm:leading-snug md:mt-[16px] sm:text-[0.5rem]">
+                {showFullBio ? info.bio : info.Bio.includes('\n')? `${info.Bio.slice(0,132)}`:info.Bio.slice(0,50)}
                 {/* {info && info.Bio ? info.Bio.slice(0, 140) : ""} */}
               </p>
               {info.Bio.length > 140 && (
                 <button
                   id="showMoreButton"
-                  className="text-blue-500 hover:underline relative bottom-2 md:bottom-0 "
+                  className="text-blue-500 hover:underline relative bottom-2 md:bottom-0 "e
                   onClick={toggleBioVisibility}
                 >
                   {showFullBio ? "Show Less" : "Show More"}

@@ -53,13 +53,13 @@ const biomake = ({ mode }) => {
         [name]: splittedValue,
       }));
     } else if (name === "User Name") {
-      setUserNameChanged(true)
+      setUserNameChanged(true);
       setInputs((prevInputs) => ({
         ...prevInputs,
         id: value,
       }));
     } else if (name === "Picture") {
-      setPicChanged(true)
+      setPicChanged(true);
       setPicURL(files[0]);
     } else {
       setInputs((prevInputs) => ({
@@ -77,7 +77,6 @@ const biomake = ({ mode }) => {
       } catch (error) {
         if (error.code.includes("permission")) {
           navigate("/login");
-          
         }
         console.error("Error fetching profile:", error);
       }
@@ -96,6 +95,11 @@ const biomake = ({ mode }) => {
     const nameRegex = /^[a-zA-Z\s-']+$/;
     if (!nameRegex.test(inputs.Name)) {
       toast.error("Please enter a valid name.");
+      return;
+    }
+    if (inputs.Name.length > 20) {
+      toast.error("Name too long");
+      toast.info("Your First name is just enough O_O");
       return;
     }
 
@@ -120,10 +124,24 @@ const biomake = ({ mode }) => {
       toast.info("Ma bro got skills ✨");
       return;
     }
+    for (const skill of inputs.Skills) {
+      if (skill.length > 19) {
+        toast.error("Skill too long");
+        toast.info("Stop Za Cap");
+        return; // Exit the function if a skill is too long
+      }
+    }
     if (inputs.FunFacts.length > 8) {
       toast.error("We only support up to 8 fun facts");
       toast.info("People won't laugh on all of that (。_。)");
       return;
+    }
+    for (const fact of inputs.FunFacts) {
+      if (fact.length > 19) {
+        toast.error("Fun fact too long");
+        toast.info("We ain't read all of that");
+        return; // Exit the function if a fun fact is too long
+      }
     }
 
     // Validate Image
@@ -152,7 +170,7 @@ const biomake = ({ mode }) => {
     if (mode == "create") {
       await createProfile(inputs, picURL, navigate);
     } else if (mode == "edit") {
-      editProfile(inputs, picURL, navigate,userNameChanged,picChanged);
+      editProfile(inputs, picURL, navigate, userNameChanged, picChanged);
     }
   };
 
@@ -189,7 +207,7 @@ const biomake = ({ mode }) => {
             handleChange={handleChange}
             value={inputs.Name}
           />
-          
+
           <Input
             name="Picture"
             logo={pic}
@@ -242,7 +260,7 @@ const biomake = ({ mode }) => {
             }
             name="Skills"
             onChange={handleChange}
-            value={inputs.Skills.join('\n')}
+            value={inputs.Skills.join("\n")}
           />
         </div>
         <div className={divStyle}>
@@ -258,7 +276,7 @@ const biomake = ({ mode }) => {
             }
             name="FunFacts"
             onChange={handleChange}
-            value={inputs.FunFacts.join('\n')}
+            value={inputs.FunFacts.join("\n")}
           />
         </div>
 

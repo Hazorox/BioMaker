@@ -27,7 +27,9 @@ const editProfile = async (data, picURL, navigate, userNameChanged,picChanged) =
     profiles.forEach((doc) => {
       userRef = doc.ref;
     });
-
+    console.log(`user name changed state : ${userNameChanged}`)
+    console.log(`pic  changed state : ${picChanged}`)
+    if(userNameChanged||picChanged){
     if (userNameChanged) {
       const profileQuery = await getDocs(collection(db, "profiles"));
       let userExists = profileQuery.docs.some(
@@ -39,24 +41,15 @@ const editProfile = async (data, picURL, navigate, userNameChanged,picChanged) =
         return;
       }
     }
-    if(!picChanged){
+    if(!picChanged&&userNameChanged){
       //TODO: Fix when user changes their username the profile name ain't getting updated >:(
       try {
         // Step 1: Get a reference to the old file
         const oldFileRef = ref(storage, `images/${id}.png`);
         
         // Step 2: Get the download URL of the old file
-        try {
-          const url = await getDownloadURL(oldFileRef);
-          const response = await fetch(url);
-          if (!response.ok) {
-              throw new Error('Network response was not ok');
-          }
-          const blob = await response.blob();
-      } catch (error) {
-          console.error("Error fetching the URL:", error);
-          toast.error("Failed to fetch the URL.");
-      }
+        const oldFileUrl = await getDownloadURL(oldFileRef);
+        const blob = await fetch(oldFileUrl).then((res) => res.blob());
 
         // Step 4: Create a reference for the new file
         const newFileRef = ref(storage, `images/${data.id}.png`); // Adjust the path as needed
@@ -79,6 +72,8 @@ const editProfile = async (data, picURL, navigate, userNameChanged,picChanged) =
       console.log('error deleting old pic')
     }
       await uploadBytes(ref(storage, `images/${data.id}.png`), picURL);
+      console.log('uploaded pic')
+      }
 
         // Step 6: Delete the old file
       
@@ -92,7 +87,7 @@ const editProfile = async (data, picURL, navigate, userNameChanged,picChanged) =
     console.log("all goin good");
     await updateDoc(userRef, data);
     localStorage.setItem("id", JSON.stringify(data.id));
-    toast.success("Profile Created Successfully");
+    toast.success("Profile Edited Successfully");
     navigate(`/${data.id}`, { replace: true });
   } catch (err) {
     console.log(err);

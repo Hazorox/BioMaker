@@ -19,12 +19,26 @@ const Profile = () => {
   const [info, setInfo] = useState(null);
   const [showFullBio, setShowFullBio] = useState(false);
   const [showEmail, setShowEmail] = useState(false);
+  const [showShare, setShowShare] = useState(false);
+  const [showShareFacebook, setShareFacebook] = useState(false);
+  const [showShareIg, setShareIg] = useState(false);
+  const [showShareX, setShareX] = useState(false);
   const navigate = useNavigate();
   const goEdit = () => {
     navigate(`/biomake/edit/`);
   };
-  const openShare =() =>{
-
+  const toggleShare =() =>{
+    setShowShare(prev=>!prev)
+  }
+  const toggleShowShareItem = item =>{
+    switch (item){
+      case 'facebook':
+        setShareFacebook(prev=>!prev)
+      case 'ig':
+        setShareIg(prev=>!prev)
+      case 'x':
+        setShareX(prev=>!prev)
+    }
   }
   useEffect(() => {
     const fetchProfile = async () => {
@@ -74,6 +88,53 @@ const Profile = () => {
       <div
         className={" h-screen flex   items-center justify-center overflow-auto"}
       >
+        {/* Hidden Share Card */}
+        <div
+          className={
+            (showShare ? "visible " : "hidden ") +
+            transparent +
+            " w-[500px] h-[300px] p-[15px] gap-[10px] flex justify-center items-center"
+          }
+          >
+          <p className="text-2xl font-bold absolute top-2 left-2">
+            Share This BioCard
+          </p>
+          <div className="flex gap-3">
+            {info.Facebook && (
+              <img
+                className={'cursor-pointer w-[100px] h-[100px]'}
+                onClick={toggleShowShareItem("facebook")}
+
+                src={facebook}
+                alt="Facebook Logo"
+              />
+            )}
+            {info.X && (
+              <img
+                className={'cursor-pointer w-[100px] h-[100px]'}
+                onClick={toggleShowShareItem("x")}
+
+                src={x}
+                alt="X (Twitter) Logo"
+              />
+            )}
+            {info.Instagram && (
+              <img
+                className={'cursor-pointer w-[100px] h-[100px]'}
+                onClick={toggleShowShareItem("ig")}
+                src={ig}
+                alt="Instagram Logo"
+              />
+            )}</div>
+          {/* <img src={} alt="close button" className="w-[20px] h-[20px] cursor-pointer" /> */}
+          <FaXmark
+            color="black"
+            cursor={"pointer"}
+            size={35}
+            onClick={toggleShare}
+            className="absolute top-[10px] right-[10px]"
+            />
+        </div>
         {/* Hidden Email Card */}
         <div
           className={
@@ -118,7 +179,7 @@ const Profile = () => {
         {/*transparent card*/}
         <div
           className={
-            (showFullBio || showEmail ? "hidden " : "visible ") +
+            (showFullBio || showEmail||showShare ? "hidden " : "visible ") +
             transparent +
             " w-[350px] md:w-[700px]  h-[500px] p-[15px] gap-[10px] flex flex-col"
           }
@@ -220,18 +281,18 @@ const Profile = () => {
             )}
           </div>
         </div>
-        {/* Edit Button */}
         
           <button
             className={
               "bg-green-500 flex gap-5  h-[40px]  w-[250px] justify-center py-2 px-4 rounded-md shadow-md absolute bottom-1 md:bottom-10  " +buttonstyle
             }
-            onClick={openShare}
-          >
+            onClick={toggleShare}
+            >
             
             <FaShareAlt className="text-2xl" /> Share
           </button>
          
+            {/* Edit Button */}
         {localId == id ? (
           <button
             className={

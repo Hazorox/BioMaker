@@ -26,6 +26,10 @@ export const createUser = async (
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       toast.success(`User Created Successfully`);
+      const id = JSON.parse(localStorage.getItem("id"));
+      if(id){
+        navigate(`/${id}`,{replace:true})
+      }
       navigate("/biomake/create", { replace: true }); // Use navigate here
     } catch (err) {
       if (err.code === "auth/email-already-in-use") {

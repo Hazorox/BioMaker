@@ -5,13 +5,17 @@ import maillogo from "../assets/maillogo.svg";
 import facebook from "./../assets/facebook.svg";
 import ig from "./../assets/ig.svg";
 import x from "./../assets/x.svg";
-import { FaXmark } from "react-icons/fa6";
+import { FaWhatsapp, FaXmark } from "react-icons/fa6";
 import { useNavigate, useParams } from "react-router-dom";
 import Avatar, { AvatarComponent } from "avatar-initials";
 import { buttonstyle } from "../variables";
 import "../idk.css";
 import getProfile from "../hooks/getProfile";
-import { FaEdit, FaShareAlt } from "react-icons/fa";
+import { FaEdit, FaShareAlt, FaWhatsappSquare } from "react-icons/fa";
+import { FacebookShareButton, FacebookShareCount, TelegramShareButton, WhatsappIcon } from "react-share";
+import { TwitterShareButton } from "react-share";
+import { WhatsappShareButton } from "react-share";
+import whatsapp from './../assets/whatsapp.svg'
 const Profile = () => {
   const logoStyle = "w-[50px] h-[50px] cursor-pointer";
   const { id } = useParams();
@@ -20,25 +24,13 @@ const Profile = () => {
   const [showFullBio, setShowFullBio] = useState(false);
   const [showEmail, setShowEmail] = useState(false);
   const [showShare, setShowShare] = useState(false);
-  const [showShareFacebook, setShareFacebook] = useState(false);
-  const [showShareIg, setShareIg] = useState(false);
-  const [showShareX, setShareX] = useState(false);
+  
   const navigate = useNavigate();
   const goEdit = () => {
     navigate(`/biomake/edit/`);
   };
   const toggleShare =() =>{
     setShowShare(prev=>!prev)
-  }
-  const toggleShowShareItem = item =>{
-    switch (item){
-      case 'facebook':
-        setShareFacebook(prev=>!prev)
-      case 'ig':
-        setShareIg(prev=>!prev)
-      case 'x':
-        setShareX(prev=>!prev)
-    }
   }
   useEffect(() => {
     const fetchProfile = async () => {
@@ -100,10 +92,9 @@ const Profile = () => {
             Share This BioCard
           </p>
           <div className="flex gap-3">
-            {info.Facebook && (
+            {/* {info.Facebook && (
               <img
                 className={'cursor-pointer w-[100px] h-[100px]'}
-                onClick={toggleShowShareItem("facebook")}
 
                 src={facebook}
                 alt="Facebook Logo"
@@ -112,7 +103,7 @@ const Profile = () => {
             {info.X && (
               <img
                 className={'cursor-pointer w-[100px] h-[100px]'}
-                onClick={toggleShowShareItem("x")}
+                onClick={toggleX}
 
                 src={x}
                 alt="X (Twitter) Logo"
@@ -121,11 +112,28 @@ const Profile = () => {
             {info.Instagram && (
               <img
                 className={'cursor-pointer w-[100px] h-[100px]'}
-                onClick={toggleShowShareItem("ig")}
+                onClick={toggleIg}
                 src={ig}
                 alt="Instagram Logo"
               />
-            )}</div>
+            )} */}
+             <FacebookShareButton url = {window.location.href} ><img
+                className={'cursor-pointer w-[100px] h-[100px]'}
+
+                src={facebook}
+                alt="Facebook Logo"
+              /></FacebookShareButton>
+            <TwitterShareButton url = {window.location.href} ><img
+                className={'cursor-pointer w-[100px] h-[100px]'}
+
+                src={x}
+                alt="X (Twitter) Logo"
+              /></TwitterShareButton>
+            <WhatsappShareButton url = {window.location.href}>
+              <img src={whatsapp} className={'cursor-pointer w-[90px] h-[90px]'} alt="Whatsapp Logo"/>
+            </WhatsappShareButton>
+            </div>
+            
           {/* <img src={} alt="close button" className="w-[20px] h-[20px] cursor-pointer" /> */}
           <FaXmark
             color="black"

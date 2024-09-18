@@ -11,11 +11,13 @@ import "../idk.css";
 import getProfile from "../hooks/getProfile";
 import { FaEdit, FaShareAlt } from "react-icons/fa";
 import { WhatsappShareButton, TwitterShareButton } from "react-share";
+import Jdenticon from 'react-jdenticon';
 import whatsapp from "./../assets/whatsapp.svg";
 import { toast } from "react-toastify";
 const Profile = () => {
   const logoStyle = "w-[50px] h-[50px] cursor-pointer";
   const randomID = JSON.parse(localStorage.getItem("randomID"));
+  const [emptyImage,setEmptyImage] = useState(false)
   const [info, setInfo] = useState(null);
   const [showFullBio, setShowFullBio] = useState(false);
   const [showEmail, setShowEmail] = useState(false);
@@ -75,78 +77,6 @@ const Profile = () => {
       <div
         className={" h-screen flex   items-center justify-center overflow-auto"}
       >
-        {/* Hidden Share Card */}
-        <div
-          className={
-            (showShare ? "visible " : "hidden ") +
-            transparent +
-            " w-[500px] h-[300px] p-[15px] gap-[10px] flex flex-col justify-center items-center"
-          }
-        >
-          <p className="text-2xl font-bold absolute top-2 left-2">
-            Share This BioCard
-          </p>
-          <div className="flex gap-3">
-            {/* {info.Facebook && (
-              <img
-                className={'cursor-pointer w-[100px] h-[100px]'}
-
-                src={facebook}
-                alt="Facebook Logo"
-              />
-            )}
-            {info.X && (
-              <img
-                className={'cursor-pointer w-[100px] h-[100px]'}
-                onClick={toggleX}
-
-                src={x}
-                alt="X (Twitter) Logo"
-              />
-            )}
-            {info.Instagram && (
-              <img
-                className={'cursor-pointer w-[100px] h-[100px]'}
-                onClick={toggleIg}
-                src={ig}
-                alt="Instagram Logo"
-              />
-            )} */}
-            <TwitterShareButton url={link}>
-              <img
-                className={"cursor-pointer w-[100px] h-[100px]"}
-                src={x}
-                alt="X (Twitter) Logo"
-              />
-            </TwitterShareButton>
-            <WhatsappShareButton url={link}>
-              <img
-                src={whatsapp}
-                className={"cursor-pointer w-[90px] h-[90px]"}
-                alt="Whatsapp Logo"
-              />
-            </WhatsappShareButton>
-          </div>
-          <button
-            onClick={copyLink}
-            className={
-              buttonstyle +
-              " bg-green-600 w-[300px] rounded-lg flex justify-center items-center h-[40px] "
-            }
-          >
-            <FaLink className="mt-1 mr-1" />
-            Copy Link
-          </button>
-
-          {/* <img src={} alt="close button" className="w-[20px] h-[20px] cursor-pointer" /> */}
-          <FaXmark
-            color="black"
-            cursor={"pointer"}
-            size={35}
-            onClick={toggleShare}
-            className="absolute top-[10px] right-[10px]"
-          />
-        </div>
         {/* Hidden Email Card */}
         <div
           className={
@@ -198,11 +128,16 @@ const Profile = () => {
         >
           <div className="h-2/6  flex space-between">
             <span className="w-[120px] md:w-1/6  flex flex-col justify-center">
-              <img
-                src={info.picURL}
-                alt="profile picture"
-                className="h-[100px] md:w-[100px] md:h-[100px] rounded-full"
-              />
+            {info.picURL && !emptyImage ? (
+                <img
+                    src={info.picURL}
+                    alt="profile picture"
+                    className="h-[100px] md:w-[100px] md:h-[100px] rounded-full"
+                    onError={() => setEmptyImage(true)} // Set error state on image load failure
+                />
+            ) : (
+                <Jdenticon size={100} value={info.Name} />
+            )}
             </span>
             <div className="w-5/6 flex flex-col items-center mt-5 mb-10  ">
               <p className="text-md mb-2 md:mb-auto md:text-3xl font-bold relative sm:top-[10px] md:top-[15px]">
@@ -322,6 +257,78 @@ const Profile = () => {
             <FaEdit className="text-2xl" /> Edit
           </button>
         ) : null}
+          {/* Hidden Share Card */}
+          <div
+          className={
+            (showShare ? "visible " : "hidden ") +
+            transparent +
+            " w-[500px] h-[300px] p-[15px] gap-[10px] flex flex-col justify-center items-center"
+          }
+        >
+          <p className="text-2xl font-bold absolute top-2 left-2">
+            Share This BioCard
+          </p>
+          <div className="flex gap-3">
+            {/* {info.Facebook && (
+              <img
+                className={'cursor-pointer w-[100px] h-[100px]'}
+
+                src={facebook}
+                alt="Facebook Logo"
+              />
+            )}
+            {info.X && (
+              <img
+                className={'cursor-pointer w-[100px] h-[100px]'}
+                onClick={toggleX}
+
+                src={x}
+                alt="X (Twitter) Logo"
+              />
+            )}
+            {info.Instagram && (
+              <img
+                className={'cursor-pointer w-[100px] h-[100px]'}
+                onClick={toggleIg}
+                src={ig}
+                alt="Instagram Logo"
+              />
+            )} */}
+            <TwitterShareButton url={link}>
+              <img
+                className={"cursor-pointer w-[100px] h-[100px]"}
+                src={x}
+                alt="X (Twitter) Logo"
+              />
+            </TwitterShareButton>
+            <WhatsappShareButton url={link}>
+              <img
+                src={whatsapp}
+                className={"cursor-pointer w-[90px] h-[90px]"}
+                alt="Whatsapp Logo"
+              />
+            </WhatsappShareButton>
+          </div>
+          <button
+            onClick={copyLink}
+            className={
+              buttonstyle +
+              " bg-green-600 w-[300px] rounded-lg flex justify-center items-center h-[40px] "
+            }
+          >
+            <FaLink className="mt-1 mr-1" />
+            Copy Link
+          </button>
+
+          {/* <img src={} alt="close button" className="w-[20px] h-[20px] cursor-pointer" /> */}
+          <FaXmark
+            color="black"
+            cursor={"pointer"}
+            size={35}
+            onClick={toggleShare}
+            className="absolute top-[10px] right-[10px]"
+          />
+        </div>
       </div>
     </>
   );

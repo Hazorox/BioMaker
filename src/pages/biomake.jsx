@@ -313,7 +313,7 @@ const biomake = ({ mode }) => {
             buttonstyle
           }
         >
-          Create My Profile
+          {mode == "create" ? "Create Profile" : "Remake Profile"}
         </button>
       </main>
     </div>

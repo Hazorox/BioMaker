@@ -5,17 +5,19 @@ import maillogo from "../assets/maillogo.svg";
 import facebook from "./../assets/facebook.svg";
 import ig from "./../assets/ig.svg";
 import x from "./../assets/x.svg";
-import { FaWhatsapp, FaXmark } from "react-icons/fa6";
+import { FaLink, FaXmark } from "react-icons/fa6";
 import { useNavigate, useParams } from "react-router-dom";
-import Avatar, { AvatarComponent } from "avatar-initials";
 import { buttonstyle } from "../variables";
 import "../idk.css";
 import getProfile from "../hooks/getProfile";
-import { FaEdit, FaShareAlt, FaWhatsappSquare } from "react-icons/fa";
-import { FacebookShareButton, FacebookShareCount, TelegramShareButton, WhatsappIcon } from "react-share";
-import { TwitterShareButton } from "react-share";
-import { WhatsappShareButton } from "react-share";
-import whatsapp from './../assets/whatsapp.svg'
+import { FaEdit, FaShareAlt } from "react-icons/fa";
+import {
+  FacebookShareButton,
+  WhatsappShareButton,
+  TwitterShareButton,
+} from "react-share";
+import whatsapp from "./../assets/whatsapp.svg";
+import { toast } from "react-toastify";
 const Profile = () => {
   const logoStyle = "w-[50px] h-[50px] cursor-pointer";
   const { id } = useParams();
@@ -24,14 +26,14 @@ const Profile = () => {
   const [showFullBio, setShowFullBio] = useState(false);
   const [showEmail, setShowEmail] = useState(false);
   const [showShare, setShowShare] = useState(false);
-  
+  const link = window.location.href;
   const navigate = useNavigate();
   const goEdit = () => {
     navigate(`/biomake/edit/`);
   };
-  const toggleShare =() =>{
-    setShowShare(prev=>!prev)
-  }
+  const toggleShare = () => {
+    setShowShare((prev) => !prev);
+  };
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -65,6 +67,17 @@ const Profile = () => {
   const toggleEmail = () => {
     setShowEmail((prev) => !prev);
   };
+  const copyLink = () => {
+    navigator.clipboard
+      .writeText(link)
+      .then(() => {
+        toast.success("Link copied to clipboard");
+      })
+      .catch((err) => {
+        console.error("Error copying link:", err);
+        toast.error("Error copying link");
+      });
+  };
 
   if (!info) {
     return (
@@ -85,9 +98,9 @@ const Profile = () => {
           className={
             (showShare ? "visible " : "hidden ") +
             transparent +
-            " w-[500px] h-[300px] p-[15px] gap-[10px] flex justify-center items-center"
+            " w-[500px] h-[300px] p-[15px] gap-[10px] flex flex-col justify-center items-center"
           }
-          >
+        >
           <p className="text-2xl font-bold absolute top-2 left-2">
             Share This BioCard
           </p>
@@ -117,23 +130,39 @@ const Profile = () => {
                 alt="Instagram Logo"
               />
             )} */}
-             <FacebookShareButton url = {window.location.href} ><img
-                className={'cursor-pointer w-[100px] h-[100px]'}
-
+            <FacebookShareButton url={link}>
+              <img
+                className={"cursor-pointer w-[100px] h-[100px]"}
                 src={facebook}
                 alt="Facebook Logo"
-              /></FacebookShareButton>
-            <TwitterShareButton url = {window.location.href} ><img
-                className={'cursor-pointer w-[100px] h-[100px]'}
-
+              />
+            </FacebookShareButton>
+            <TwitterShareButton url={link}>
+              <img
+                className={"cursor-pointer w-[100px] h-[100px]"}
                 src={x}
                 alt="X (Twitter) Logo"
-              /></TwitterShareButton>
-            <WhatsappShareButton url = {window.location.href}>
-              <img src={whatsapp} className={'cursor-pointer w-[90px] h-[90px]'} alt="Whatsapp Logo"/>
+              />
+            </TwitterShareButton>
+            <WhatsappShareButton url={link}>
+              <img
+                src={whatsapp}
+                className={"cursor-pointer w-[90px] h-[90px]"}
+                alt="Whatsapp Logo"
+              />
             </WhatsappShareButton>
-            </div>
-            
+          </div>
+          <button
+            onClick={copyLink}
+            className={
+              buttonstyle +
+              " bg-green-600 w-[300px] rounded-lg flex justify-center items-center h-[40px] "
+            }
+          >
+            <FaLink className="mt-1 mr-1" />
+            Copy Link
+          </button>
+
           {/* <img src={} alt="close button" className="w-[20px] h-[20px] cursor-pointer" /> */}
           <FaXmark
             color="black"
@@ -141,7 +170,7 @@ const Profile = () => {
             size={35}
             onClick={toggleShare}
             className="absolute top-[10px] right-[10px]"
-            />
+          />
         </div>
         {/* Hidden Email Card */}
         <div
@@ -187,7 +216,7 @@ const Profile = () => {
         {/*transparent card*/}
         <div
           className={
-            (showFullBio || showEmail||showShare ? "hidden " : "visible ") +
+            (showFullBio || showEmail || showShare ? "hidden " : "visible ") +
             transparent +
             " w-[350px] md:w-[700px]  h-[500px] p-[15px] gap-[10px] flex flex-col"
           }
@@ -205,13 +234,18 @@ const Profile = () => {
                 {info.Name}
               </p>
               <p className="text-xs  md:text-xl md:leading-normal sm:leading-snug md:mt-[16px] sm:text-[0.5rem]">
-                {showFullBio ? info.bio : info.Bio.includes('\n')? `${info.Bio.slice(0,132)}`:info.Bio.slice(0,50)}
+                {showFullBio
+                  ? info.bio
+                  : info.Bio.includes("\n")
+                  ? `${info.Bio.slice(0, 132)}`
+                  : info.Bio.slice(0, 50)}
                 {/* {info && info.Bio ? info.Bio.slice(0, 140) : ""} */}
               </p>
               {info.Bio.length > 140 && (
                 <button
                   id="showMoreButton"
-                  className="text-blue-500 hover:underline relative bottom-2 md:bottom-0 "e
+                  className="text-blue-500 hover:underline relative bottom-2 md:bottom-0 "
+                  e
                   onClick={toggleBioVisibility}
                 >
                   {showFullBio ? "Show Less" : "Show More"}
@@ -289,18 +323,18 @@ const Profile = () => {
             )}
           </div>
         </div>
-        
-          <button
-            className={
-              "bg-green-500 flex gap-5  h-[40px]  w-[250px] justify-center py-2 px-4 rounded-md shadow-md absolute bottom-1 md:bottom-10  " +buttonstyle
-            }
-            onClick={toggleShare}
-            >
-            
-            <FaShareAlt className="text-2xl" /> Share
-          </button>
-         
-            {/* Edit Button */}
+
+        <button
+          className={
+            "bg-green-500 flex gap-5  h-[40px]  w-[250px] justify-center py-2 px-4 rounded-md shadow-md absolute bottom-1 md:bottom-10  " +
+            buttonstyle
+          }
+          onClick={toggleShare}
+        >
+          <FaShareAlt className="text-2xl" /> Share
+        </button>
+
+        {/* Edit Button */}
         {localId == id ? (
           <button
             className={

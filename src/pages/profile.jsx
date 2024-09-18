@@ -78,7 +78,7 @@ const Profile = () => {
     <>
       {/* main page */}
       <div
-        className={" h-screen flex   items-center justify-center overflow-auto"}
+        className={" h-screen flex  overflow-y-hidden  items-center justify-center overflow-auto"}
       >
         {/* Hidden Email Card */}
         <div

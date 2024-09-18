@@ -5,7 +5,7 @@ import AccountInput from "../components/AccountInput";
 
 const Signup = () => {
   return (
-    <div className="flex flex-col gap-20 h-screen items-center justify-center">
+    <div className="flex flex-col gap-20 h-screen overflow-y-hidden items-center justify-center">
       <Header message="Signup to start BioMaking" />
       <AccountInput newUser={true} />
       <Footer />

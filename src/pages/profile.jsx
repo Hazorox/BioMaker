@@ -35,7 +35,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const profileData = await getProfile(randomID,id);
+        const profileData = await getProfile(id);
         setInfo(profileData);
       } catch (error) {
         console.error("Error fetching profile:", error);

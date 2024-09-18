@@ -249,7 +249,7 @@ const Profile = () => {
         {randomID == info.randomID ? (
           <button
             className={
-              "flex gap-5 align-middle h-[40px] absolute   w-[250px] justify-center bg-gray-500 py-2 px-4 rounded-md shadow-md bottom-[50px] md:bottom-[90px]  " +
+              "flex gap-5 align-middle h-[40px] absolute mt-4   w-[250px] justify-center bg-gray-500 py-2 px-4 rounded-md shadow-md bottom-[50px] md:bottom-[90px]  " +
               buttonstyle
             }
             onClick={goEdit}

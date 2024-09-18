@@ -16,7 +16,7 @@ import { transparent } from "../variables";
 import Input from "../components/input";
 import { toast } from "react-toastify";
 import id from "../assets/id.svg";
-import { Navigate, redirect, useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import createProfile from "../hooks/createProfile";
 import editProfile from "../hooks/editProfile";
 import getProfile from "../hooks/getProfile";

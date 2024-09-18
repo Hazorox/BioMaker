@@ -16,7 +16,7 @@ const Input = ({ logo, handleChange, name, type, placeholder,value='' }) => {
           name={name}
           type={type ? type : "text"}
           placeholder={placeholder}
-          value={value?value:""}
+          value={value?value:null}
         />
       </div>
     </>

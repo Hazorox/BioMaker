@@ -20,8 +20,7 @@ import whatsapp from "./../assets/whatsapp.svg";
 import { toast } from "react-toastify";
 const Profile = () => {
   const logoStyle = "w-[50px] h-[50px] cursor-pointer";
-  const { id } = useParams();
-  const localId = JSON.parse(localStorage.getItem("id"));
+  const randomID = JSON.parse(localStorage.getItem("randomID"));
   const [info, setInfo] = useState(null);
   const [showFullBio, setShowFullBio] = useState(false);
   const [showEmail, setShowEmail] = useState(false);
@@ -37,7 +36,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const profileData = await getProfile(id);
+        const profileData = await getProfile(randomID);
         setInfo(profileData);
       } catch (error) {
         console.error("Error fetching profile:", error);
@@ -46,7 +45,7 @@ const Profile = () => {
     };
 
     fetchProfile();
-  }, [id, navigate]);
+  }, [randomID, navigate]);
 
   useEffect(() => {
     if (info && info.picURL === "") {
@@ -335,7 +334,7 @@ const Profile = () => {
         </button>
 
         {/* Edit Button */}
-        {localId == id ? (
+        {randomID == info.randomID ? (
           <button
             className={
               "flex gap-5 align-middle h-[40px] absolute   w-[250px] justify-center bg-gray-500 py-2 px-4 rounded-md shadow-md bottom-[50px] md:bottom-[90px]  " +

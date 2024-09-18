@@ -41,6 +41,8 @@ const createProfile = async (data, picURL, navigate) => {
   try {
     const profiles = collection(db, "profiles");
     const profileQuery = await getDocs(profiles);
+    const randomID= Math.floor(Math.random() * 1000000000)
+    data.randomID = randomID
 
     let userExists = profileQuery.docs.some((doc) => doc.data().id === data.id);
 
@@ -55,7 +57,7 @@ const createProfile = async (data, picURL, navigate) => {
     });
 
     await addDoc(profiles, data);
-    localStorage.setItem("id", JSON.stringify(data.id));
+    localStorage.setItem("randomID", JSON.stringify(randomID));
     toast.success("Profile Created Successfully");
     navigate(`/${data.id}`, { replace: true });
   } catch (err) {

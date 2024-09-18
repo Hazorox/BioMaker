@@ -1,4 +1,3 @@
-//TODO: Add functionallity to the share button
 import React, { useState, useEffect } from "react";
 import { transparent } from "../variables";
 import maillogo from "../assets/maillogo.svg";
@@ -6,16 +5,12 @@ import facebook from "./../assets/facebook.svg";
 import ig from "./../assets/ig.svg";
 import x from "./../assets/x.svg";
 import { FaLink, FaXmark } from "react-icons/fa6";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { buttonstyle } from "../variables";
 import "../idk.css";
 import getProfile from "../hooks/getProfile";
 import { FaEdit, FaShareAlt } from "react-icons/fa";
-import {
-  FacebookShareButton,
-  WhatsappShareButton,
-  TwitterShareButton,
-} from "react-share";
+import { WhatsappShareButton, TwitterShareButton } from "react-share";
 import whatsapp from "./../assets/whatsapp.svg";
 import { toast } from "react-toastify";
 const Profile = () => {
@@ -46,18 +41,6 @@ const Profile = () => {
 
     fetchProfile();
   }, [randomID, navigate]);
-
-  useEffect(() => {
-    if (info && info.picURL === "") {
-      const avatarUrl = Avatar.initialAvatar({
-        initials: info.Name,
-        initial_fg: "#ffffff",
-        initial_bg: "#007bff",
-        initial_size: 100,
-      });
-      setInfo({ ...info, picURL: avatarUrl }); // Create a new object to avoid direct mutation
-    }
-  }, [info]);
 
   const toggleBioVisibility = () => {
     setShowFullBio((prev) => !prev);
@@ -129,13 +112,6 @@ const Profile = () => {
                 alt="Instagram Logo"
               />
             )} */}
-            <FacebookShareButton url={link}>
-              <img
-                className={"cursor-pointer w-[100px] h-[100px]"}
-                src={facebook}
-                alt="Facebook Logo"
-              />
-            </FacebookShareButton>
             <TwitterShareButton url={link}>
               <img
                 className={"cursor-pointer w-[100px] h-[100px]"}

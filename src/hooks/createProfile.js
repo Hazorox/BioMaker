@@ -50,7 +50,7 @@ const createProfile = async (data, picURL, navigate) => {
       toast.error("User Name Already Exists");
       return;
     }
-    const imgRef = ref(storage, `images/${data.id}.png`);
+    const imgRef = ref(storage, `images/${randomID}.png`);
 
     await uploadBytes(imgRef, picURL).then(() => {
       console.log("Uploaded a blob or file!");

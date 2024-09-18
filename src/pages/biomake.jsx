@@ -28,7 +28,7 @@ const biomake = ({ mode }) => {
   const [picChanged, setPicChanged] = useState(false);
   // Navigate if user is not authenticated
 
-  const userId = JSON.parse(localStorage.getItem("id"));
+  const randomID = JSON.parse(localStorage.getItem("randomID"));
   const [inputs, setInputs] = useState({
     id: "",
     Name: "",
@@ -72,7 +72,7 @@ const biomake = ({ mode }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getProfile(userId);
+        const data = await getProfile(randomID);
         setInputs(data);
       } catch (error) {
         if (error.code.includes("permission")) {
@@ -83,13 +83,17 @@ const biomake = ({ mode }) => {
     };
 
     fetchData();
-  }, [userId]);
+  }, [randomID]);
 
   const handleSubmit = async () => {
     // Validate ID
     if (inputs.id === "") {
       toast.error("Please enter an ID.");
       return;
+    }
+    if (inputs.id.includes(" ")){
+      toast.error("A username can't contain spaces")
+      return ;
     }
     // Validate Name
     const nameRegex = /^[a-zA-Z\s-']+$/;

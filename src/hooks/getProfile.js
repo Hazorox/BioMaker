@@ -1,7 +1,7 @@
 import { getDocs, collection, query, where } from "firebase/firestore";
 import { db, storage } from "../firebase/fb";
 import { ref, getDownloadURL } from "firebase/storage";
-const getProfile = async (randomID) => {
+const getProfile = async (randomID   ) => {
   const q = query(collection(db, "profiles"), where("randomID", "==", randomID));
   const profiles = await getDocs(q);
   let userDoc = null;
@@ -11,7 +11,7 @@ const getProfile = async (randomID) => {
   });
 
   try {
-    const imgRef = ref(storage, `images/${userDoc.id}.png`);
+    const imgRef = ref(storage, `images/${randomID}.png`);
     const url = await getDownloadURL(imgRef);
     userDoc.picURL = url;
     console.log(userDoc.picURL)

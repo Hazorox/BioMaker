@@ -12,11 +12,12 @@ import getProfile from "../hooks/getProfile";
 import { FaEdit, FaShareAlt } from "react-icons/fa";
 import { WhatsappShareButton, TwitterShareButton } from "react-share";
 import Jdenticon from 'react-jdenticon';
-
+import { useParams } from "react-router-dom";
 import whatsapp from "./../assets/whatsapp.svg";
 import { toast } from "react-toastify";
 const Profile = () => {
   const logoStyle = "w-[50px] h-[50px] cursor-pointer";
+  const id = useParams();
   const randomID = JSON.parse(localStorage.getItem("randomID"));
   const [emptyImage,setEmptyImage] = useState(false)
   const [info, setInfo] = useState(null);
@@ -34,7 +35,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const profileData = await getProfile(randomID);
+        const profileData = await getProfile(randomID,id);
         setInfo(profileData);
       } catch (error) {
         console.error("Error fetching profile:", error);

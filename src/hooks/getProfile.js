@@ -1,8 +1,8 @@
 import { getDocs, collection, query, where } from "firebase/firestore";
 import { db, storage } from "../firebase/fb";
 import { ref, getDownloadURL } from "firebase/storage";
-const getProfile = async (randomID   ) => {
-  const q = query(collection(db, "profiles"), where("randomID", "==", randomID));
+const getProfile = async (randomID ,id  ) => {
+  const q = query(collection(db, "profiles"), where("id", "==", id));
   const profiles = await getDocs(q);
   let userDoc = null;
 

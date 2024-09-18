@@ -12,6 +12,7 @@ import getProfile from "../hooks/getProfile";
 import { FaEdit, FaShareAlt } from "react-icons/fa";
 import { WhatsappShareButton, TwitterShareButton } from "react-share";
 import Jdenticon from 'react-jdenticon';
+
 import whatsapp from "./../assets/whatsapp.svg";
 import { toast } from "react-toastify";
 const Profile = () => {

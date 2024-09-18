@@ -72,7 +72,7 @@ const biomake = ({ mode }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getProfile(randomID);
+        const data = await getProfile(randomID,'random');
         setInputs(data);
       } catch (error) {
         if (error.code.includes("permission")) {

@@ -17,7 +17,7 @@ import whatsapp from "./../assets/whatsapp.svg";
 import { toast } from "react-toastify";
 const Profile = () => {
   const logoStyle = "w-[50px] h-[50px] cursor-pointer";
-  const id = useParams();
+  const {id} = useParams();
   const randomID = JSON.parse(localStorage.getItem("randomID"));
   const [emptyImage,setEmptyImage] = useState(false)
   const [info, setInfo] = useState(null);
@@ -36,6 +36,7 @@ const Profile = () => {
     const fetchProfile = async () => {
       try {
         const profileData = await getProfile(id);
+        console.log(profileData);
         setInfo(profileData);
       } catch (error) {
         console.error("Error fetching profile:", error);
@@ -125,7 +126,7 @@ const Profile = () => {
           className={
             (showFullBio || showEmail || showShare ? "hidden " : "visible ") +
             transparent +
-            " w-[350px] md:w-[700px]  h-[500px] p-[15px] gap-[10px] flex flex-col"
+            " w-[350px] md:w-[700px] mb-[50px] md:mb-0  h-[500px] p-[15px] gap-[10px] flex flex-col"
           }
         >
           <div className="h-2/6  flex space-between">
@@ -250,7 +251,7 @@ const Profile = () => {
         {randomID == info.randomID ? (
           <button
             className={
-              "flex gap-5 align-middle h-[40px] absolute mt-4   w-[250px] justify-center bg-gray-500 py-2 px-4 rounded-md shadow-md bottom-[50px] md:bottom-[90px]  " +
+              "flex gap-5 align-middle h-[40px] absolute    w-[250px] justify-center bg-gray-500 py-2 px-4 rounded-md shadow-md bottom-[50px] md:bottom-[90px]  " +
               buttonstyle
             }
             onClick={goEdit}

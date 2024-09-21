@@ -4,13 +4,11 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBMj6bFcro23Mbsq_oZvSB7VRqdR8Llvq0",
+  apiKey: import.meta.env.VITE_API_KEY,
   authDomain: "biomaker3.firebaseapp.com",
   projectId: "biomaker3",
   storageBucket: "biomaker3.appspot.com",

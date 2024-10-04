@@ -44,8 +44,9 @@ export const loginUser = async (
       }
       toast.success(`User Logged In Successfully`);
       // return <Navigate to="/biomake" replace={true} />;
-    } catch {
+    } catch(err) {
       toast.error("An Error Occured");
+      console.log(err)
     }
   } else {
     try {

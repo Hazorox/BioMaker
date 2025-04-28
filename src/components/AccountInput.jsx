@@ -39,7 +39,7 @@ const AccountInput = ({ newUser }) => {
     }
     if (newUser) {
       const passRegex =
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+        /^(?=.*[a-z])(?=.*\d)[A-za-z\d@$!%*#?&]{5,}$/
       if (!passRegex.test(inputs.password)) {
         toast.error(
           "Please make a stronger passowrd. (like adding numbers and special characters)"
@@ -155,7 +155,7 @@ const AccountInput = ({ newUser }) => {
           </>
         ) : (
           <>
-            Don't have an account?{" "}
+            Do not have an account?{" "}
             <Link to={"/signup"}>
               <span className={anchorstyle}>Sign Up</span>
             </Link>
